@@ -4,7 +4,7 @@ import { UserRole } from 'src/types/enums';
 import DelayedButton from 'src/components/DelayedButton';
 import httpClient from 'src/utils/httpClient';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { intOrDefault } from '@atas/webapp-ui-shared';
+import { intOrDefault } from '@atas/weblib-ui-js';
 import pmActions from 'src/redux/actions/pmActions';
 import DelayedLink from 'src/components/DelayedLink';
 

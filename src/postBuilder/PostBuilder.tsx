@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DelayedLink from 'src/components/DelayedLink';

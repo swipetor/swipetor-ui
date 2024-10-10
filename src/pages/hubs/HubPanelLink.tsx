@@ -1,7 +1,7 @@
 import React from 'react';
 import DelayedLink from 'src/components/DelayedLink';
 import UploadedPhoto from 'src/components/UploadedPhoto';
-import { detectBrowser, prettyNumberCount } from '@atas/webapp-ui-shared';
+import { detectBrowser, prettyNumberCount } from '@atas/weblib-ui-js';
 import { HubDto } from 'src/types/DTOs';
 
 interface Props {

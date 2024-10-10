@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import postActions from 'src/redux/actions/postActions';
-import { detectBrowser, intOrDefault } from '@atas/webapp-ui-shared';
+import { detectBrowser, intOrDefault } from '@atas/weblib-ui-js';
 import { useLocation, useParams } from 'react-router-dom';
 import querystring from 'query-string';
 import pubsub from 'src/libs/pubsub/pubsub';

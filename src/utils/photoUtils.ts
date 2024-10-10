@@ -1,4 +1,4 @@
-import { PhotoUtilsBase } from '@atas/webapp-ui-shared';
+import { PhotoUtilsBase } from '@atas/weblib-ui-js';
 import uiConfig from 'src/init/uiConfig';
 import storageBucket from 'src/libs/storageBucket';
 

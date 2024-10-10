@@ -1,4 +1,4 @@
-import { shortenString } from '@atas/webapp-ui-shared';
+import { shortenString } from '@atas/weblib-ui-js';
 import uiConfig from 'src/init/uiConfig';
 import { PostDto } from 'src/types/DTOs';
 

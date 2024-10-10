@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 
 const logger = new Logger('wheelUtils', LogLevels.Warn);
 

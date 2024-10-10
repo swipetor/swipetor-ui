@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect, useMemo } from 'react';
 import { UIState } from 'src/redux/reducers/reducers';
 import SingleMedia from '../media/SingleMedia';
@@ -12,7 +12,7 @@ import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { PostForUser } from 'src/types/DTOs';
 
 interface Props {
-	post?: PostWithIndex<PostForUser>;
+	post?: PostWithIndex;
 }
 
 export default function SinglePost({ post }: Props) {

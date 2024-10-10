@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import { PostMediaDto } from 'src/types/DTOs';
 import { getVideoUrl } from 'src/utils/videoUtils';
 import postActions from 'src/redux/actions/postActions';

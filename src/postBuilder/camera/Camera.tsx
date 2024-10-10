@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import DelayedButton from 'src/components/DelayedButton';
 import { useNavigate } from 'react-router-dom';
 import CameraButton from 'src/postBuilder/camera/CameraButton';

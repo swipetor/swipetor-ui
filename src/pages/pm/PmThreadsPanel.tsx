@@ -1,4 +1,4 @@
-import { intOrDefault, shortenString } from '@atas/webapp-ui-shared';
+import { intOrDefault, shortenString } from '@atas/weblib-ui-js';
 import React, { useCallback, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom'; // Assuming you're using React Router v5+
@@ -14,11 +14,11 @@ import pmUtils from './pmUtils';
 
 interface Props {
 	//extends RouteComponentProps<{ threadId?: string; init?: string }> {
-	threadsById?: Dictionary<PmThreadDto, number>;
+	threadsById?: Dictionary;
 	currentUser?: UserDto;
 }
 
-const PmThreadsPanel: React.FC<Props> = () => {
+const PmThreadsPanel: React.FC = () => {
 	const threadsById = useSelector((state: UIState) => state.pm.threadsById);
 	const currentUser = useSelector((state: UIState) => state.my.user);
 	const { init, ...params } = useParams<{ threadId: string; init: string }>();

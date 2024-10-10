@@ -1,4 +1,4 @@
-import { Logger, LogLevels, prettyNumberCount } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels, prettyNumberCount } from '@atas/weblib-ui-js';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import DelayedButton from 'src/components/DelayedButton';
@@ -12,12 +12,12 @@ import postActions from 'src/redux/actions/postActions';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	post: PostWithIndex<PostForUser>;
+	post: PostWithIndex;
 }
 
 const logger = new Logger('PostMenuRow', LogLevels.Info);
 
-const PostMenuRow: React.FC<Props> = ({ post }) => {
+const PostMenuRow: React.FC = ({ post }) => {
 	const currentUser = useSelector((state: UIState) => state.my.user);
 	const isMuted = useSelector((state: UIState) => state.post.isMuted);
 

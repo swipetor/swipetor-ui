@@ -2,7 +2,7 @@ import React from 'react';
 import DelayedLink from 'src/components/DelayedLink';
 import { NotifDto } from 'src/types/DTOs';
 import notifActions from 'src/redux/actions/notifActions';
-import { Logger, LogLevels, prettyDate } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels, prettyDate } from '@atas/weblib-ui-js';
 
 interface BaseNotifProps extends GenericNotifProps {
 	photoDiv: React.ReactNode;

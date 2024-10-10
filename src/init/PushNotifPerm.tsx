@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logger, LogLevels, PushNotifPermBase } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels, PushNotifPermBase } from '@atas/weblib-ui-js';
 import FCM from 'src/init/FCM';
 import popupActions from 'src/redux/actions/popupActions';
 import httpClient from 'src/utils/httpClient';

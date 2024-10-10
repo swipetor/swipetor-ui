@@ -1,4 +1,4 @@
-import { detectBrowser, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { detectBrowser, Logger, LogLevels } from '@atas/weblib-ui-js';
 import React from 'react';
 import uiConfig from 'src/init/uiConfig';
 import LoginHome from 'src/pages/auth/LoginPage';

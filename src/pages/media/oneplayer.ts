@@ -2,9 +2,9 @@ import videojs from 'video.js';
 import { getVideoUrl } from 'src/utils/videoUtils';
 import { PostMediaDto } from 'src/types/DTOs';
 import photoUtils from 'src/utils/photoUtils';
-import { detectBrowser, Logger, LogLevels, MobileTap } from '@atas/webapp-ui-shared';
+import { detectBrowser, Logger, LogLevels, MobileTap } from '@atas/weblib-ui-js';
 
-export type VideoPlayer = ReturnType<typeof videojs>;
+export type VideoPlayer = ReturnType;
 
 export class Oneplayer {
 	player?: VideoPlayer;

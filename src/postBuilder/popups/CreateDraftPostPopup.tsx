@@ -1,4 +1,4 @@
-import { SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PopupWrapper from 'src/popups/PopupWrapper';
@@ -7,7 +7,7 @@ import { PostDto } from 'src/types/DTOs';
 import httpClient from 'src/utils/httpClient';
 
 interface CreateDraftPostPopupProps {
-	onPostCreated?: (postId: number) => Promise<void>;
+	onPostCreated?: (postId: number) => Promise;
 }
 
 function CreateDraftPostPopup(props: CreateDraftPostPopupProps) {
@@ -20,7 +20,7 @@ function CreateDraftPostPopup(props: CreateDraftPostPopupProps) {
 		inputRef.current?.focus();
 	}, []);
 
-	const okayBtnClick = async (): Promise<void> => {
+	const okayBtnClick = async (): Promise => {
 		setOkayButtonDisabled(true);
 
 		try {

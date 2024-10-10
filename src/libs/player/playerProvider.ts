@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import SinglePlayer from 'src/libs/player/SinglePlayer';
 import store from 'src/redux/store';
 import { PostForUser } from 'src/types/DTOs';
@@ -52,7 +52,7 @@ class PlayerProvider {
 		const posts = store.getState().post.posts;
 		if (!posts) return null;
 
-		const post = posts[pix] as PostWithIndex<PostForUser>;
+		const post = posts[pix] as PostWithIndex;
 		const media = post.medias[mix];
 
 		if (!media) throw new Error(`getPlayerForIndex(): Media not found, ix: ${pix}/${mix}, medias: ${post.medias}`);

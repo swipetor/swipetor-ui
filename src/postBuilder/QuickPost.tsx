@@ -1,4 +1,4 @@
-import { SimpleSnackbarVariant, useFormValue } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant, useFormValue } from '@atas/weblib-ui-js';
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useNavigate } from 'react-router-dom';

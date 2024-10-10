@@ -1,5 +1,5 @@
 import React from 'react';
-import { intOrDefault, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { intOrDefault, Logger, LogLevels } from '@atas/weblib-ui-js';
 import postActions from 'src/redux/actions/postActions';
 
 const logger = new Logger('PostScroller', LogLevels.Info);
@@ -8,9 +8,9 @@ const logger = new Logger('PostScroller', LogLevels.Info);
  * This class is used to detect which post is active by the scroll position.
  */
 export default class PostScroller {
-	private postsCnt: React.RefObject<HTMLDivElement>;
+	private postsCnt: React.RefObject;
 
-	constructor(bodyRef: React.RefObject<HTMLDivElement>) {
+	constructor(bodyRef: React.RefObject) {
 		this.postsCnt = bodyRef;
 	}
 

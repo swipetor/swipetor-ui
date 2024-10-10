@@ -1,4 +1,4 @@
-import { MentionsTextareaBase } from '@atas/webapp-ui-shared';
+import { MentionsTextareaBase } from '@atas/weblib-ui-js';
 import React from 'react';
 import { MentionsInputProps, SuggestionDataItem } from 'react-mentions';
 import { UserDto } from 'src/types/DTOs';
@@ -14,7 +14,7 @@ async function mentionsFetchFn(word: string, cb: (data: SuggestionDataItem[]) =>
 	}
 }
 
-type MentionsTextareaProps = Partial<MentionsInputProps>;
+type MentionsTextareaProps = Partial;
 
 export function Mentions(props: MentionsTextareaProps) {
 	return <MentionsTextareaBase {...props} mentionsFetchFn={mentionsFetchFn} />;

@@ -1,4 +1,4 @@
-import { Logger, LogLevels, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import React, { useEffect, useRef, useState } from 'react';
 import { VideoPlayer } from 'src/pages/media/oneplayer';
 import VideoLooper from 'src/utils/VideoLooper';

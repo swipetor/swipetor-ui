@@ -1,4 +1,4 @@
-import { prettySeconds } from '@atas/webapp-ui-shared';
+import { prettySeconds } from '@atas/weblib-ui-js';
 import PubSub from 'pubsub-js';
 import React, { CSSProperties } from 'react';
 import DelayedButton from 'src/components/DelayedButton';

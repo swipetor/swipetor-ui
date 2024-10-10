@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import popupActions from 'src/redux/actions/popupActions';
 import DelayedButton from 'src/components/DelayedButton';
-import { initFullScreenPopup, PopupsState } from '@atas/webapp-ui-shared';
+import { initFullScreenPopup, PopupsState } from '@atas/weblib-ui-js';
 
 const mapStateToProps = (state: { popups: PopupsState }) => ({ ...state.popups.fullScreenPopup });
 

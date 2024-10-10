@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect, useRef, useState } from 'react';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { usePostsPanelKeyboardShortcuts, useUrlParams } from 'src/pages/post/PostsPanelHooks';

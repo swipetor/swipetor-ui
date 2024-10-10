@@ -1,4 +1,4 @@
-import { secondsToHumanDuration } from '@atas/webapp-ui-shared';
+import { secondsToHumanDuration } from '@atas/weblib-ui-js';
 
 export default class ClipTimesFacade {
 	private _clipTimes: number[][];

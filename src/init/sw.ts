@@ -1,3 +1,3 @@
-import { initSw } from '@atas/webapp-ui-shared';
+import { initSw } from '@atas/weblib-ui-js';
 
 initSw();

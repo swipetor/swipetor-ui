@@ -5,7 +5,7 @@ import { LocationType } from 'src/types/enums';
 import { ActionMeta, MultiValue, SingleValue, StylesConfig } from 'react-select';
 import { LocationDto } from 'src/types/DTOs';
 import popupActions from 'src/redux/actions/popupActions';
-import { SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 
 interface LocationSelectProps {
 	placeholder: string;
@@ -19,15 +19,7 @@ interface LocationSelectProps {
 
 type LocationSelectElem = { value: number; label: string };
 
-const LocationSelect: React.FC<LocationSelectProps> = ({
-	placeholder,
-	type,
-	onSelect,
-	defaultValues,
-	isMulti,
-	className,
-	limit,
-}) => {
+const LocationSelect: React.FC = ({ placeholder, type, onSelect, defaultValues, isMulti, className, limit }) => {
 	const [selectedValues, setSelectedValues] = useState<LocationSelectElem[]>(defaultValues || []);
 
 	useEffect(() => {
@@ -36,7 +28,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({
 		}
 	}, [defaultValues]);
 
-	const loadOptions = async (inputValue: string): Promise<LocationSelectElem[]> => {
+	const loadOptions = async (inputValue: string): Promise => {
 		if (!inputValue || inputValue.length < 3) {
 			return [];
 		}
@@ -46,10 +38,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({
 		return result ? result.data.map(r => ({ value: r.id, label: r.fullName, data: result.data })) : [];
 	};
 
-	const onChange = (
-		value: SingleValue<LocationSelectElem> | MultiValue<LocationSelectElem>,
-		action: ActionMeta<LocationSelectElem>,
-	) => {
+	const onChange = (value: SingleValue | MultiValue, action: ActionMeta) => {
 		const updatedValues: LocationSelectElem[] = value ? (Array.isArray(value) ? value : [value]) : [];
 
 		if (isMulti && limit && updatedValues.length > limit) {
@@ -80,7 +69,7 @@ const LocationSelect: React.FC<LocationSelectProps> = ({
 export default LocationSelect;
 
 // Define the styles
-const darkModeStyles: StylesConfig<LocationSelectElem> = {
+const darkModeStyles: StylesConfig = {
 	control: styles => ({
 		...styles,
 		backgroundColor: 'black',

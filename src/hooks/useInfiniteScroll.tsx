@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useUIStore } from 'src/redux/reduxUtils';
 import postActions from 'src/redux/actions/postActions';
-import { detectBrowser, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { detectBrowser, Logger, LogLevels } from '@atas/weblib-ui-js';
 import wheelUtils from 'src/utils/wheelUtils';
 import pubsub from 'src/libs/pubsub/pubsub';
 
@@ -14,7 +14,7 @@ let touchEnd = 0;
 let isTouching = false;
 let wheelTurnedAt = 0;
 
-export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElement>) {
+export default function useInfiniteScroll(postsCont: React.RefObject) {
 	if ((window as any).userDeviceInfo.isBot) return;
 
 	const pix = useUIStore(s => s.post.pix);

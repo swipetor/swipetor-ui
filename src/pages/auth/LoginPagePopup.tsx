@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import DelayedButton from 'src/components/DelayedButton';
 import httpClient from 'src/utils/httpClient';
 import popupActions from 'src/redux/actions/popupActions';
-import { SimpleSnackbarVariant, useFormValue } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant, useFormValue } from '@atas/weblib-ui-js';
 import uiConfig from 'src/init/uiConfig';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useNavigate } from 'react-router-dom';

@@ -6,14 +6,14 @@ import popupActions from 'src/redux/actions/popupActions';
 import DelayedButton from 'src/components/DelayedButton';
 import { PostForUser, PostMediaDto } from 'src/types/DTOs';
 import ExclusiveForFollowersButton from 'src/pages/media/ExclusiveForFollowersButton';
-import { secondsToPrettyDuration, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { secondsToPrettyDuration, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import currencyUtils from 'src/utils/currencyUtils';
 import { PostMediaType } from 'src/types/enums';
 import ExclusiveMediaDesc from 'src/pages/media/ExclusiveMediaDesc';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	post: PostWithIndex<PostForUser>;
+	post: PostWithIndex;
 	media: PostMediaDto;
 }
 

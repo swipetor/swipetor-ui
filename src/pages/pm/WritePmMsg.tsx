@@ -1,4 +1,4 @@
-import { detectBrowser } from '@atas/webapp-ui-shared';
+import { detectBrowser } from '@atas/weblib-ui-js';
 import React, { useState } from 'react';
 import { Mentions } from 'src/components/mentions';
 import PushNotifPerm from 'src/init/PushNotifPerm';
@@ -11,7 +11,7 @@ interface Props {
 	onFocus: () => void;
 }
 
-const WritePmMsg: React.FC<Props> = ({ threadId, onSent, onFocus }) => {
+const WritePmMsg: React.FC = ({ threadId, onSent, onFocus }) => {
 	const [txt, setTxt] = useState('');
 
 	const sendClick = async () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { detectBrowser } from '@atas/webapp-ui-shared';
+import { detectBrowser } from '@atas/weblib-ui-js';
 import uiConfig from 'src/init/uiConfig';
 import DelayedButton from 'src/components/DelayedButton';
 import popupActions from 'src/redux/actions/popupActions';

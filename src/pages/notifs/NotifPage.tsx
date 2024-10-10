@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect } from 'react';
 import myActions from 'src/redux/actions/myActions';
 import notifActions from 'src/redux/actions/notifActions';

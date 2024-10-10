@@ -1,5 +1,5 @@
 // Extend MediaTrackCapabilities to include zoom
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 
 interface MediaTrackCapabilitiesExtended extends MediaTrackCapabilities {
 	zoom?: {

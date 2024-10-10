@@ -1,4 +1,4 @@
-import { PhotoUploadContext, PhotoUploadSelect } from '@atas/webapp-ui-shared';
+import { PhotoUploadContext, PhotoUploadSelect } from '@atas/weblib-ui-js';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import PhotoUploadPreviews from 'src/components/PhotoUploadPreviews';
@@ -22,7 +22,7 @@ export default function MyPhoto() {
 		myActions.getMy();
 	};
 
-	const uploadClick = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+	const uploadClick = async (e: React.MouseEvent) => {
 		e.preventDefault();
 		const formdata = new FormData();
 		photoUploadContext.files.map(f => formdata.set('file', f));

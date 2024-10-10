@@ -4,7 +4,7 @@ import appshell, { AppShellState } from './appshellReducer';
 import my, { MyState } from './myReducer';
 import notifs, { NotifsState } from './notifsReducer';
 import pm, { PmState } from './pmReducer';
-import { popupsReducer as popups, PopupsState } from '@atas/webapp-ui-shared';
+import { popupsReducer as popups, PopupsState } from '@atas/weblib-ui-js';
 import post, { PostState } from './postReducer';
 
 export interface UIState extends Action {

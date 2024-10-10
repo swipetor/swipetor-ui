@@ -1,4 +1,4 @@
-import { LogLevels, Logger, initHttpClient } from '@atas/webapp-ui-shared';
+import { LogLevels, Logger, initHttpClient } from '@atas/weblib-ui-js';
 import appshellActions from 'src/redux/actions/appshellActions';
 import popupActions from 'src/redux/actions/popupActions';
 

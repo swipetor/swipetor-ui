@@ -1,4 +1,4 @@
-import { initSlidingPopup, Logger, LogLevels, SlidingPopupProps } from '@atas/webapp-ui-shared';
+import { initSlidingPopup, Logger, LogLevels, SlidingPopupProps } from '@atas/weblib-ui-js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DelayedButton from 'src/components/DelayedButton';

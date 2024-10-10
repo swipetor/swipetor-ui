@@ -1,7 +1,7 @@
 import DelayedButton from 'src/components/DelayedButton';
 import React, { useEffect, useMemo, useState } from 'react';
 import popupActions from 'src/redux/actions/popupActions';
-import { detectBrowser, Logger, LogLevels, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { detectBrowser, Logger, LogLevels, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import userActions from 'src/redux/actions/userActions';
 import { PostForUser, PostMediaDto } from 'src/types/DTOs';
 import { PostMediaType } from 'src/types/enums';
@@ -16,7 +16,7 @@ import { useUIStore } from 'src/redux/reduxUtils';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	post: PostWithIndex<PostForUser>;
+	post: PostWithIndex;
 	media: PostMediaDto;
 }
 

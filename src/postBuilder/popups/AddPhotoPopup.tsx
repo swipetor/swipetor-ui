@@ -3,7 +3,7 @@ import {
 	PhotoUploadContext,
 	PhotoUploadSelect,
 	SimpleSnackbarVariant,
-} from '@atas/webapp-ui-shared';
+} from '@atas/weblib-ui-js';
 import React, { useRef, useState } from 'react';
 import PhotoUploadPreviews from 'src/components/PhotoUploadPreviews';
 import PopupWrapper from 'src/popups/PopupWrapper';

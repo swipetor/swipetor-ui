@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { PostMediaDto } from 'src/types/DTOs';
-import { Logger, LogLevels, secondsToHumanDuration } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels, secondsToHumanDuration } from '@atas/weblib-ui-js';
 import { findFullVideoTimeByClip } from 'src/utils/videoUtils';
 
 interface Props {
@@ -12,7 +12,7 @@ interface Props {
 
 const logger = new Logger('VideoProgressBar', LogLevels.Info);
 
-const VideoProgressBar: React.FC<Props> = (props: Props) => {
+const VideoProgressBar: React.FC = (props: Props) => {
 	const progressBarRef = React.useRef<HTMLDivElement>(null);
 	const [currentPercent, setCurrentPercent] = useState<number>(0);
 	const currentPercentRef = React.useRef<number>(0);

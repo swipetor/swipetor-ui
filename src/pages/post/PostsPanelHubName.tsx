@@ -1,4 +1,4 @@
-import { shortenString } from '@atas/webapp-ui-shared';
+import { shortenString } from '@atas/weblib-ui-js';
 import React, { useEffect, useState } from 'react';
 import { HubDto, UserDto } from 'src/types/DTOs';
 import httpClient from 'src/utils/httpClient';

@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import VideoProgressBar from 'src/pages/media/VideoProgressBar';
 import { useUIStore } from 'src/redux/reduxUtils';
@@ -8,7 +8,7 @@ import SinglePlayer from 'src/libs/player/SinglePlayer';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	currentPost: PostWithIndex<PostForUser>;
+	currentPost: PostWithIndex;
 	currentMedia: PostMediaDto;
 }
 

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { Logger, LogLevels, SWMsgTypes } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels, SWMsgTypes } from '@atas/weblib-ui-js';
 import pubsub from 'src/libs/pubsub/pubsub';
 import store from 'src/redux/store';
 import { useNavigate } from 'react-router-dom';

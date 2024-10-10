@@ -1,4 +1,4 @@
-import { intOrDefault } from '@atas/webapp-ui-shared';
+import { intOrDefault } from '@atas/weblib-ui-js';
 import querystring from 'query-string';
 import React from 'react';
 import { useLocation } from 'react-router-dom';

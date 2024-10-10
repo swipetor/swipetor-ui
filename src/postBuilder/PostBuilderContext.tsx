@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { PostDto, PostMediaDto, SubPlanDto } from '../types/DTOs';
-import { intOrDefault, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { intOrDefault, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import { useParams } from 'react-router-dom';
 import httpClient from 'src/utils/httpClient';
 import PostBuilder from 'src/postBuilder/PostBuilder';
@@ -18,10 +18,10 @@ interface State {
 interface PostBuilderContextProps {
 	s: State;
 	refreshPost: () => void;
-	updateS: (partialState: Partial<State>) => void;
-	updateMedia: (id: number, media: Partial<PostMediaDto>) => void;
+	updateS: (partialState: Partial) => void;
+	updateMedia: (id: number, media: Partial) => void;
 	submitUpdate: (isPublished: boolean) => void;
-	setS: React.Dispatch<React.SetStateAction<State>>;
+	setS: React.Dispatch;
 }
 
 const PostBuilderContext = createContext<PostBuilderContextProps | undefined>(undefined);
@@ -41,14 +41,14 @@ export function PostBuilderWithContext() {
 		updateS({ post: post.data, selectedHubIds: post.data.hubs.map(c => c.id), subPlans: subPlans.data });
 	}
 
-	const updateS = (partialState: Partial<State>) => {
+	const updateS = (partialState: Partial) => {
 		// console.log('Running updateS', partialState);
 		// console.trace();
 
 		setS(st => ({ ...st, ...partialState }));
 	};
 
-	const updateMedia = (id: number, media: Partial<PostMediaDto>) => {
+	const updateMedia = (id: number, media: Partial) => {
 		if (!s.post) return;
 		updateS({
 			post: { ...s.post, medias: s.post.medias.map(m => (m.id === id ? { ...m, ...media } : m)) },

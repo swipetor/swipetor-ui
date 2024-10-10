@@ -1,6 +1,6 @@
 /*
 import popupActions from 'src/redux/actions/popupActions';
-import { humanDurationToSeconds, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { humanDurationToSeconds, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 
 export default class ClipTimesStringParser {
 	private _clipTimesStr?: string;

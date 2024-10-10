@@ -1,6 +1,6 @@
 import reducers from './reducers/reducers';
 import { configureStore } from '@reduxjs/toolkit';
-import { PopupsActionType } from '@atas/webapp-ui-shared';
+import { PopupsActionType } from '@atas/weblib-ui-js';
 
 const store = configureStore({
 	reducer: reducers,

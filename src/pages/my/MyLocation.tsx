@@ -4,7 +4,7 @@ import { LocationType } from 'src/types/enums';
 import httpClient from 'src/utils/httpClient';
 import myActions from 'src/redux/actions/myActions';
 import { useUIStore } from 'src/redux/reduxUtils';
-import { GeoCoordinates } from '@atas/webapp-ui-shared/dist/types/utils/geolocationUtils';
+import { GeoCoordinates } from '@atas/weblib-ui-js/dist/types/utils/geolocationUtils';
 
 export default function MyLocation() {
 	const [geolocation, setGeolocation] = React.useState<GeoCoordinates | null>(null);

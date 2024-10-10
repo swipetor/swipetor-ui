@@ -1,4 +1,4 @@
-import { initGlobalSlidingPopup } from '@atas/webapp-ui-shared';
+import { initGlobalSlidingPopup } from '@atas/weblib-ui-js';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import SlidingPopup from 'src/popups/SlidingPopup';

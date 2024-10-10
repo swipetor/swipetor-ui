@@ -1,4 +1,4 @@
-import { mentionUtils, prettyDate } from '@atas/webapp-ui-shared';
+import { mentionUtils, prettyDate } from '@atas/weblib-ui-js';
 import React, { useRef } from 'react';
 import DelayedLink from 'src/components/DelayedLink';
 import { PmMsgDto, PmThreadDto, UserDto } from 'src/types/DTOs';
@@ -10,7 +10,7 @@ interface Props {
 	currentUser: UserDto;
 }
 
-const SinglePmMsg: React.FC<Props> = ({ msg, thread, currentUser }) => {
+const SinglePmMsg: React.FC = ({ msg, thread, currentUser }) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 
 	const isMyPost = () => {

@@ -1,4 +1,4 @@
-import { getRedirUrlIfExists } from '@atas/webapp-ui-shared';
+import { getRedirUrlIfExists } from '@atas/weblib-ui-js';
 import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import DelayedButton from 'src/components/DelayedButton';

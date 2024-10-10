@@ -2,7 +2,7 @@ import React from 'react';
 import { Navigate } from 'react-router-dom';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { UserRole } from 'src/types/enums';
-import { getLoginUrlWithRedir } from '@atas/webapp-ui-shared';
+import { getLoginUrlWithRedir } from '@atas/weblib-ui-js';
 import popupActions from 'src/redux/actions/popupActions';
 
 interface Props {

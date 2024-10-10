@@ -5,7 +5,7 @@ import DelayedLink from 'src/components/DelayedLink';
 import popupActions from 'src/redux/actions/popupActions';
 import CreateDraftPostPopup from 'src/postBuilder/popups/CreateDraftPostPopup';
 import httpClient from 'src/utils/httpClient';
-import { HttpClientFileUploadHeaders } from '@atas/webapp-ui-shared';
+import { HttpClientFileUploadHeaders } from '@atas/weblib-ui-js';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { UserRole } from 'src/types/enums';
 

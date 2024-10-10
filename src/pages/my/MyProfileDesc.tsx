@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import httpClient from 'src/utils/httpClient';
 import popupActions from 'src/redux/actions/popupActions';
-import { SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import DelayedButton from 'src/components/DelayedButton';
 import uiConfig from 'src/init/uiConfig';
 import { useUIStore } from 'src/redux/reduxUtils';

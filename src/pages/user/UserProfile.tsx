@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { intOrDefault, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { intOrDefault, Logger, LogLevels } from '@atas/weblib-ui-js';
 import httpClient from 'src/utils/httpClient';
 import { GetUsersApiResp } from 'src/types/ApiResponses';
 import FollowButton from 'src/pages/post/FollowButton';

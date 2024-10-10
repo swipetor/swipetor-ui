@@ -1,5 +1,5 @@
 import postActions from 'src/redux/actions/postActions';
-import { intOrDefault, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { intOrDefault, Logger, LogLevels } from '@atas/weblib-ui-js';
 import React from 'react';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { PostForUser } from 'src/types/DTOs';
@@ -10,10 +10,10 @@ const logger = new Logger('MediaScroller', LogLevels.Info);
  * This class is used to detect which media is active in the post by checking the horizontal scroll position.
  */
 export default class MediaScroller {
-	private mediaItemsCnt: React.RefObject<HTMLDivElement>;
-	private post: PostWithIndex<PostForUser>;
+	private mediaItemsCnt: React.RefObject;
+	private post: PostWithIndex;
 
-	constructor(mediaItemsCnt: React.RefObject<HTMLDivElement>, post: PostWithIndex<PostForUser>) {
+	constructor(mediaItemsCnt: React.RefObject, post: PostWithIndex) {
 		this.mediaItemsCnt = mediaItemsCnt;
 		this.post = post;
 	}

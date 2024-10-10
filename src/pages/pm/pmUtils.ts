@@ -1,5 +1,5 @@
 import { PmThreadUserDto } from 'src/types/DTOs';
-import { shortenString } from '@atas/webapp-ui-shared';
+import { shortenString } from '@atas/weblib-ui-js';
 
 export default new (class PmUtils {
 	getThreadName(threadUsers?: PmThreadUserDto[] | null, shortenNames = false, excludeUserId?: number) {

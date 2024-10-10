@@ -6,7 +6,7 @@ import { PostDto } from 'src/types/DTOs';
 import httpClient from 'src/utils/httpClient';
 import { canEditPost, canRemovePost } from 'src/utils/permUtils';
 import uiConfig from 'src/init/uiConfig';
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import { copyPostLink } from 'src/utils/postUtils';
 import { useSelector } from 'react-redux';
 import { UIState } from 'src/redux/reducers/reducers';
@@ -16,7 +16,7 @@ interface Props {
 	closeFn: (isInstant?: boolean) => void;
 }
 
-const SinglePostMenu: React.FC<Props> = ({ post, closeFn }) => {
+const SinglePostMenu: React.FC = ({ post, closeFn }) => {
 	const user = useSelector((state: UIState) => state.my.user);
 
 	const logger = new Logger(SinglePostMenu, LogLevels.Info);

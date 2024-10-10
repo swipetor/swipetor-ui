@@ -4,7 +4,7 @@ import httpClient from 'src/utils/httpClient';
 import DelayedButton from 'src/components/DelayedButton';
 import DelayedLink from 'src/components/DelayedLink';
 import { useUIStore } from 'src/redux/reduxUtils';
-import { getLoginUrlWithRedir, SimpleSnackbarVariant, useFormValue } from '@atas/webapp-ui-shared';
+import { getLoginUrlWithRedir, SimpleSnackbarVariant, useFormValue } from '@atas/weblib-ui-js';
 import { UserRole } from 'src/types/enums';
 import popupActions from 'src/redux/actions/popupActions';
 import uiConfig from 'src/init/uiConfig';

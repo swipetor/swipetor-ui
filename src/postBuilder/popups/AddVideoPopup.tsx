@@ -1,4 +1,4 @@
-import { HttpClientFileUploadHeaders, isHttpsUrl, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { HttpClientFileUploadHeaders, isHttpsUrl, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import React, { useState } from 'react';
 import PopupWrapper from 'src/popups/PopupWrapper';
 import popupActions from 'src/redux/actions/popupActions';
@@ -34,18 +34,18 @@ const handleFileUpload = async (postId: number, file: File) => {
 	popupActions.snackbarMsg('Video is added', SimpleSnackbarVariant.success);
 };
 
-const AddVideoPopup: React.FC<Props> = ({ postId, refresh }) => {
+const AddVideoPopup: React.FC = ({ postId, refresh }) => {
 	const [file, setFile] = useState<File | undefined>(undefined);
 	const [okayButtonDisabled, setOkayButtonDisabled] = useState<boolean>(false);
 	const [mediaUrl, setMediaUrl] = useState('');
 
-	const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+	const onFileChange = (event: React.ChangeEvent) => {
 		if (event.target.files) {
 			setFile(event.target.files[0]);
 		}
 	};
 
-	const okayBtnClick = async (): Promise<void> => {
+	const okayBtnClick = async (): Promise => {
 		try {
 			setOkayButtonDisabled(true);
 			if (file) {

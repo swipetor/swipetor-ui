@@ -5,11 +5,11 @@ import MyApiResponse from 'src/types/MyApiResponse';
 import httpClient from 'src/utils/httpClient';
 import { MySetAction, MySetUnreadNotifCountAction, MySetUnreadPmCountAction, MyState } from '../reducers/myReducer';
 import StateActionType from './stateActionType';
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 
 let onloadCallbacks: ((my: MyState) => void)[] | null = [];
 
-let autoPingToken: ReturnType<typeof setInterval> | null = null;
+let autoPingToken: ReturnType | null = null;
 let autoPingRunAt = 0; // Wrapper ping. It further checks weather to call APIs to refresh data now or later.
 
 export default new (class MyActions {

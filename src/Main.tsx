@@ -8,7 +8,7 @@ import './init/installAsApp';
 import hubActions from './redux/actions/hubActions';
 import myActions from './redux/actions/myActions';
 import './styles/_style.less';
-import { LogLevels, setViewportHeight, SimpleSnackbarVariant, SnackbarError } from '@atas/webapp-ui-shared';
+import { LogLevels, setViewportHeight, SimpleSnackbarVariant, SnackbarError } from '@atas/weblib-ui-js';
 import popupActions from 'src/redux/actions/popupActions';
 import pubsub from 'src/libs/pubsub/pubsub';
 

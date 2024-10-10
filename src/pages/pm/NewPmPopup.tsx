@@ -1,4 +1,4 @@
-import { SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import DelayedButton from 'src/components/DelayedButton';

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import httpClient from 'src/utils/httpClient';
 import { SubPlanDto } from 'src/types/DTOs';
 import DelayedButton from 'src/components/DelayedButton';
-import { SimpleSnackbarVariant, useFormValue } from '@atas/webapp-ui-shared';
+import { SimpleSnackbarVariant, useFormValue } from '@atas/weblib-ui-js';
 import H1BackBtn from 'src/components/H1BackBtn';
 import { Currency } from 'src/types/enums';
 import Select, { SingleValue } from 'react-select';
@@ -74,9 +74,7 @@ const SubPlansList: React.FC = () => {
 				<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 					<Select
 						value={{ value: currency.value, label: currency.value }}
-						onChange={(option: SingleValue<{ value: Currency; label: Currency }>) =>
-							option && currency.onChange(option.value)
-						}
+						onChange={(option: SingleValue) => option && currency.onChange(option.value)}
 						options={currencyOptions}
 						placeholder="Currency"
 						isSearchable={false}

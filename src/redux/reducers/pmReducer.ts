@@ -1,12 +1,12 @@
 import { Action } from 'redux';
 import { PmMsgDto, PmThreadDto, UserDto } from 'src/types/DTOs';
 import { Dictionary } from 'ts-essentials';
-import { arrayToObject } from '@atas/webapp-ui-shared';
+import { arrayToObject } from '@atas/weblib-ui-js';
 import StateActionType from '../actions/stateActionType';
 
 export interface PmState {
 	// All msg threads list
-	threadsById: Dictionary<PmThreadDto, number>;
+	threadsById: Dictionary;
 
 	// Current thread
 	activeThread?: PmThreadDto;
@@ -110,27 +110,27 @@ export default function (state = initialState, action: any): PmState {
 	}
 }
 
-export interface PmSetMsgListAction extends Action<StateActionType.PM_SET_MSGLIST> {
+export interface PmSetMsgListAction extends Action {
 	pmThread?: PmThreadDto;
 	pmMsgs?: PmMsgDto[];
 }
 
-export interface PmAppendMsgAction extends Action<StateActionType.PM_APPEND_MSG> {
+export interface PmAppendMsgAction extends Action {
 	pmMsg: PmMsgDto;
 }
 
-export interface PmThreadMarkReadAction extends Action<StateActionType.PM_THREAD_MARK_READ_LOCAL> {
+export interface PmThreadMarkReadAction extends Action {
 	threadId: number;
 	userId: number;
 	lastMsgId?: number;
 }
 
-export interface PmThreadListSetAction extends Action<StateActionType.PM_THREADS_SET> {
+export interface PmThreadListSetAction extends Action {
 	pmThreadList: PmThreadDto[];
 	staff: UserDto[];
 }
 
-export interface PmThreadListUpdateOneAction extends Action<StateActionType.PM_THREADS_UPDATE_ONE> {
-	threadPartial: Partial<PmThreadDto>;
+export interface PmThreadListUpdateOneAction extends Action {
+	threadPartial: Partial;
 	threadId: number;
 }

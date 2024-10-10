@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import DelayedButton from 'src/components/DelayedButton';
-import { detectBrowser } from '@atas/webapp-ui-shared';
+import { detectBrowser } from '@atas/weblib-ui-js';
 import postActions from 'src/redux/actions/postActions';
 import pubsub from 'src/libs/pubsub/pubsub';
 

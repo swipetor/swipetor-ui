@@ -8,7 +8,7 @@ import FavPosts from 'src/pages/post/FavPosts';
 import PostBuilderHome from 'src/postBuilder/PostBuilderHome';
 import myActions from 'src/redux/actions/myActions';
 import LoginPage from 'src/pages/auth/LoginPage';
-import { useGooglePageViewTracking, useMatomoPageView } from '@atas/webapp-ui-shared';
+import { useGooglePageViewTracking, useMatomoPageView } from '@atas/weblib-ui-js';
 import LoginEnterCode from 'src/pages/auth/LoginEnterCode';
 import PostsPanel from 'src/pages/post/PostsPanel';
 import appshellActions from 'src/redux/actions/appshellActions';

@@ -1,4 +1,4 @@
-import { detectBrowser, openPopup } from '@atas/webapp-ui-shared';
+import { detectBrowser, openPopup } from '@atas/weblib-ui-js';
 import qs from 'query-string';
 import React from 'react';
 
@@ -17,7 +17,7 @@ export function ShareCard(props: any) {
 		return encodeURIComponent(text);
 	}
 
-	function clickFacebook(e: React.MouseEvent<HTMLAnchorElement>) {
+	function clickFacebook(e: React.MouseEvent) {
 		e.preventDefault();
 		// const url =
 		// `https://www.facebook.com/sharer/sharer.php?u=${this.getEncodedUrl()}`;
@@ -29,7 +29,7 @@ export function ShareCard(props: any) {
 		});
 	}
 
-	function clickMessenger(e: React.MouseEvent<HTMLAnchorElement>) {
+	function clickMessenger(e: React.MouseEvent) {
 		if (!detectBrowser.isMobile()) {
 			e.preventDefault();
 			(window as any).FB.ui({
@@ -48,7 +48,7 @@ export function ShareCard(props: any) {
 		return 'fb-messenger://share/?' + qs.stringify(params);
 	}
 
-	function clickTwitter(e: React.MouseEvent<HTMLAnchorElement>) {
+	function clickTwitter(e: React.MouseEvent) {
 		e.preventDefault();
 		const link = `https://twitter.com/home?status=${getShareText()}`;
 		openPopup(link, 'twitterSharePopup', 600, 280);

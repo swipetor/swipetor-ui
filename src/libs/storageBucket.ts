@@ -1,4 +1,4 @@
-import { StorageBucketBase } from '@atas/webapp-ui-shared';
+import { StorageBucketBase } from '@atas/weblib-ui-js';
 import uiConfig from 'src/init/uiConfig';
 
 export default new (class StorageBucket extends StorageBucketBase {

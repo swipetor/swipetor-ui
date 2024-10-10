@@ -1,4 +1,4 @@
-import { detectBrowser, intOrDefault, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { detectBrowser, intOrDefault, Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect, useRef } from 'react';
 import { shallowEqual } from 'react-redux';
 import { useParams } from 'react-router-dom';

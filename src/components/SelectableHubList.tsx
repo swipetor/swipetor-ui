@@ -1,4 +1,4 @@
-import { prettyNumberCount, SimpleSnackbarVariant } from '@atas/webapp-ui-shared';
+import { prettyNumberCount, SimpleSnackbarVariant } from '@atas/weblib-ui-js';
 import React, { useEffect, useState } from 'react';
 import { shallowEqual } from 'react-redux';
 import DelayedButton from 'src/components/DelayedButton';

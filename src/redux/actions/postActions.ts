@@ -16,7 +16,7 @@ import {
 import httpClient from 'src/utils/httpClient';
 import { PostForUser } from 'src/types/DTOs';
 import { PostsGetApiResp } from 'src/types/ApiResponses';
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import qs from 'query-string';
 import playerProvider from 'src/libs/player/playerProvider';
 
@@ -140,7 +140,7 @@ const postActions = new (class PostActions {
 
 		this.logger.verbose(`nextMedia(): ${pix}/${nextMix}`);
 
-		const p = post as PostWithIndex<PostForUser>;
+		const p = post as PostWithIndex;
 		if (nextMix < 0 || nextMix >= p.medias.length) return;
 
 		this.setActive(pix, nextMix);

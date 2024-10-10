@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import cameraUtils from 'src/utils/cameraUtils';
 
 interface Props {

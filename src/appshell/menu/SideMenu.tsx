@@ -4,7 +4,7 @@ import {
 	LogLevels,
 	SideMenuBase,
 	SimpleSnackbarVariant,
-} from '@atas/webapp-ui-shared';
+} from '@atas/weblib-ui-js';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';

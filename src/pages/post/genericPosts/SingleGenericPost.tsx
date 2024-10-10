@@ -2,7 +2,7 @@ import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { PostForUser } from 'src/types/DTOs';
 import React from 'react';
 import SinglePost from 'src/pages/post/SinglePost';
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 
 interface Props {
 	post?: PostWithIndex;
@@ -15,7 +15,7 @@ export default function SingleGenericPost({ post }: Props) {
 	if (!post) return null;
 
 	if (post.type === 'PostForUser') {
-		return <SinglePost post={post as PostWithIndex<PostForUser>} />;
+		return <SinglePost post={post as PostWithIndex} />;
 	}
 
 	return null;

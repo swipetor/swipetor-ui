@@ -3,7 +3,7 @@ import React, { useRef } from 'react';
 import UploadedPhoto from 'src/components/UploadedPhoto';
 import DelayedLink from 'src/components/DelayedLink';
 import { getPostUrl } from 'src/utils/postUtils';
-import { secondsToPrettyDuration } from '@atas/webapp-ui-shared';
+import { secondsToPrettyDuration } from '@atas/weblib-ui-js';
 import ProgressIndicators from 'src/components/ProgressIndicators';
 import { useHorizontalScroll } from 'src/hooks/useHorizontalScroll';
 

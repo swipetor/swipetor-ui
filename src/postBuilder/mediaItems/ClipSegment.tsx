@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import DelayedButton from 'src/components/DelayedButton';
 import { usePostBuilderContext } from 'src/postBuilder/PostBuilderContext';
-import { humanDurationToSeconds, Logger, LogLevels, secondsToHumanDuration } from '@atas/webapp-ui-shared';
+import { humanDurationToSeconds, Logger, LogLevels, secondsToHumanDuration } from '@atas/weblib-ui-js';
 
 interface Props {
 	index: number;

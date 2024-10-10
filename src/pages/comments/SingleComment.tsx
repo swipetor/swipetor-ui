@@ -1,4 +1,4 @@
-import { mentionUtils, prettyDate } from '@atas/webapp-ui-shared';
+import { mentionUtils, prettyDate } from '@atas/weblib-ui-js';
 import React, { useState } from 'react';
 import DelayedLink from 'src/components/DelayedLink';
 import UploadedPhoto from 'src/components/UploadedPhoto';

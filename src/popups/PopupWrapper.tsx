@@ -1,11 +1,4 @@
-import {
-	initPopupWrapper,
-	Logger,
-	LogLevels,
-	PopupWrapperBase,
-	PopupWrapperProps,
-	Subtract,
-} from '@atas/webapp-ui-shared';
+import { initPopupWrapper, Logger, LogLevels, PopupWrapperBase, PopupWrapperProps, Subtract } from '@atas/weblib-ui-js';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DelayedButton from 'src/components/DelayedButton';
@@ -16,7 +9,7 @@ interface PropsFromState {
 	isOpen: boolean;
 }
 
-type RequiredProps = Subtract<PopupWrapperProps, PropsFromState>;
+type RequiredProps = Subtract;
 
 export default function PopupWrapper(props: RequiredProps) {
 	const isOpen = useUIStore(s => s.popups.globalPopup.isOpen);

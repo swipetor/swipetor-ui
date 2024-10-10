@@ -1,4 +1,4 @@
-import { shortenString } from '@atas/webapp-ui-shared';
+import { shortenString } from '@atas/weblib-ui-js';
 import React from 'react';
 import UploadedPhoto from 'src/components/UploadedPhoto';
 import { stripTags } from 'src/utils/postUtils';

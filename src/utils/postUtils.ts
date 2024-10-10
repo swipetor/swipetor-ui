@@ -1,4 +1,4 @@
-import { convertToSlug, copyToClipboard, detectBrowser, Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { convertToSlug, copyToClipboard, detectBrowser, Logger, LogLevels } from '@atas/weblib-ui-js';
 import popupActions from 'src/redux/actions/popupActions';
 import { PostDto, PostForUser, PostMediaDto, UserDto } from 'src/types/DTOs';
 import querystring from 'query-string';

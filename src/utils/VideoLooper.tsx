@@ -1,4 +1,4 @@
-import { Logger, LogLevels } from '@atas/webapp-ui-shared';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import ClipTimesFacade from 'src/libs/video/ClipTimesFacade';
 
 interface CurrentTimeFn {
