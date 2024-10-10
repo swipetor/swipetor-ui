@@ -45,7 +45,7 @@ jobs:
                   NODE_ENV=production webpack --config webpack.prod.config.js
 
             - name: Bump version
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               run: |
                   git config user.name "GitHub Actions"
                   git config user.email "<actions@github.com>"
@@ -53,14 +53,14 @@ jobs:
                   git push origin v${{ env.next_version }}
 
             - name: Archive production artifacts
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               run: |
                   rm -f ./public/build/*.LICENSE.txt
                   echo ${{ env.next_version }} > public/build/version.txt
                   tar -czvf swpweb-v${{ env.next_version }}.tar.gz ./public/build
 
             - name: Create and Publish Release
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               run: |
                   COMMIT_MSG=$(git log -1 --pretty=%B)
                   # Create a new release and upload the tar.gz as an asset
@@ -72,7 +72,7 @@ jobs:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
             - name: Set up SSH
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               run: |
                   mkdir -p ~/.ssh/
                   ls -lha ~/.ssh
@@ -81,6 +81,6 @@ jobs:
                   ssh-keyscan -p 1989 ares.swipetor.com >> ~/.ssh/known_hosts
 
             - name: Trigger pull-deploy
-              if: github.ref == 'refs/heads/master'
+              if: github.ref == 'refs/heads/main'
               run: |
                   ssh -p1989 ata@ares.swipetor.com "/opt/swipetor/bin/pull-deploy/run.sh"
