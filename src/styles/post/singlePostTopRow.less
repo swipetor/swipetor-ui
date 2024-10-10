@@ -1,0 +1,40 @@
+.topRow {
+   top: calc(15px + env(safe-area-inset-top) / 5 * 4);
+   left: 0;
+   position: absolute;
+   display: flex;
+   z-index: 60;
+
+   .userInfoDiv {
+	  margin-right: 30px;
+	  flex: 1;
+	  display: flex;
+	  align-items: center;
+
+	  .userInfo {
+		 font-size: 15px;
+		 text-shadow: 1px 1px 2px #000;
+		 padding: 5px 7px;
+		 margin-top: 5px;
+		 margin-right: 10px;
+
+		 img {
+			width: 32px;
+			border-radius: 6px;
+			vertical-align: middle;
+			margin: 0 5px;
+		 }
+	  }
+
+	  .follow {
+		 padding: 3px 5px;
+		 display: flex;
+		 align-items: center;
+		 justify-content: center;
+
+		 span.material-icons {
+			font-size: 18px;
+		 }
+	  }
+   }
+}

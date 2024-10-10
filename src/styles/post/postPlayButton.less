@@ -1,0 +1,55 @@
+.playButton {
+   position: absolute;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%) scale(2);
+   z-index: 61;
+   background-color: rgba(0, 0, 0, 0.7);
+   width: 100px;
+   height: 100px;
+   display: grid;
+   vertical-align: middle;
+   align-items: center;
+   text-align: center;
+   border-radius: 100px;
+   cursor: default;
+   opacity: 0;
+   visibility: visible;
+   animation: implodeFadeIn 0.2s ease-out forwards;
+
+   span {
+	  font-size: 96px;
+	  color: white;
+	  opacity: 1;
+	  user-select: none;
+	  -webkit-user-select: none;
+   }
+
+   &.playing {
+	  animation: explodeFadeOut 0.4s ease-out forwards;
+   }
+
+   @keyframes explodeFadeOut {
+	  0% {
+		 transform: translate(-50%, -50%) scale(1);
+		 opacity: 1;
+	  }
+	  100% {
+		 transform: translate(-50%, -50%) scale(2); /* Adjust scaling factor as needed */
+		 opacity: 0;
+	  }
+   }
+
+   @keyframes implodeFadeIn {
+	  0% {
+		 transform: translate(-50%, -50%) scale(2);
+		 opacity: 0;
+		 visibility: hidden;
+	  }
+	  100% {
+		 transform: translate(-50%, -50%) scale(1); /* Return to original size */
+		 opacity: 1;
+		 visibility: visible;
+	  }
+   }
+}

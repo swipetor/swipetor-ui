@@ -1,0 +1,35 @@
+@import (reference) '_vars';
+
+.loginPagePopup {
+	text-align: left;
+}
+
+
+.firstLoginPage {
+	.usernameRow {
+		display: flex;
+
+		.usernameBox {
+			flex: 1;
+		}
+
+		.usernameTick {
+			width: 20px;
+			padding: 20px 0 0 10px;
+			box-sizing: content-box;
+			span {
+				color: white;
+				font-size: 20px;
+				border-radius: 50%;
+
+				&.green {
+					background: green;
+				}
+
+				&.red {
+					background: red;
+				}
+			}
+		}
+	}
+}

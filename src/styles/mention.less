@@ -1,0 +1,64 @@
+.mentions {
+   // margin: 1em 0;
+}
+
+// .mentions--singleLine .mentions__control {
+// 	// display: inline-block;
+// }
+// .mentions--singleLine .mentions__higlighter {
+// 	// padding: 1px;
+// }
+// .mentions--singleLine .mentions__input {
+// 	// padding: 5px;
+// }
+
+.mentions--multiLine .mentions__control {
+   //border: 1px solid transparent;
+   //border-radius: 6px;
+   background-color: #505050;
+   font-size: 14px;
+   font-weight: normal;
+   border-radius: 6px;
+}
+
+.mentions--multiLine .mentions__highlighter {
+   overflow: hidden;
+}
+
+.mentions__mention {
+}
+
+.mentions--multiLine .mentions__input {
+   border: 1px solid transparent;
+   border-radius: 6px;
+   margin: 0;
+   overflow: auto;
+   padding: 9px;
+   min-height: 3px;
+   outline: 0;
+
+   &:hover, &:focus {
+	  border: 1px solid #666;
+   }
+}
+
+.mentions__suggestions {
+   bottom: 0;
+   top: unset;
+}
+
+.mentions__suggestions__list {
+   border: 1px solid rgba(0, 0, 0, 0.15);
+   color: white;
+   background-color: #666;
+   font-size: 14px;
+}
+
+.mentions__suggestions__item {
+   padding: 5px 15px;
+   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.mentions__suggestions__item--focused {
+   background-color: #999;
+}

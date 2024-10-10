@@ -1,0 +1,66 @@
+@import (reference) '../_vars.less';
+
+.singlePost div.postMenuRow {
+   display: flex;
+   flex-direction: column;
+   padding: 2px 0 5px 0;
+   position: absolute;
+   bottom: 15px;
+   right: 0;
+   width: 50px;
+   height: auto;
+   z-index: 93;
+
+   > button {
+	  flex: 1;
+	  margin: 4px 0 10px 0;
+	  padding: 8px 10px;
+	  color: white;
+	  height: 40px;
+	  border-radius: 6px;
+	  text-shadow: 2px 2px 5px #000;
+	  font-size: 15px;
+	  white-space: nowrap;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: center;
+
+	  @media @mobile {
+		 font-size: 14px;
+		 padding: 6px 6px;
+	  }
+
+	  &.active {
+		 font-size: 14px;
+		 background: @linkHoverColor;
+
+		 span.material-icons, span.material-icons-outlined {
+			font-size: 23px;
+		 }
+	  }
+
+	  span.text {
+		 display: block;
+		 margin-left: 5px;
+		 font-size: 12px;
+		 font-weight: 400;
+	  }
+
+	  &.disabled,
+	  &.disabled:hover,
+	  &.disabled.active {
+		 span {
+			color: #666;
+		 }
+	  }
+   }
+
+   .muteBtn.muted {
+	  background-color: rgba(255, 0, 0, 0.4);
+
+	  &:hover {
+		 background-color: rgba(255, 0, 0, 0.6);
+	  }
+   }
+}

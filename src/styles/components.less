@@ -1,0 +1,465 @@
+@import (reference) '_vars.less';
+
+.simpleSnackbar {
+   display: flex;
+   flex-direction: row;
+   position: fixed;
+   z-index: 10000;
+   background: rgba(0, 0, 0, 0.5);
+   text-align: center;
+   padding: 24px 5px 24px 10px;
+   color: white;
+   border-radius: 8px;
+   font-weight: 300;
+
+   @media @desktop {
+	  max-width: 600px;
+	  top: 4px;
+	  right: 10px;
+	  animation-name: snackbarSlideFromRight;
+	  animation-duration: 0.3s;
+   }
+
+   @media @mobile {
+	  font-size: 14px;
+	  width: 100%;
+	  bottom: @bottomTabsHeight;
+	  animation-name: snackbarSlideFromBottom;
+	  animation-duration: 0.3s;
+	  padding-left: 20px;
+	  padding-right: 20px;
+	  box-sizing: border-box;
+   }
+
+   &:hover {
+	  cursor: pointer;
+   }
+
+   &.error {
+	  background-color: rgb(205, 41, 41, 0.9);
+
+	  .errorIcon {
+		 background-color: rgb(205, 41, 41, 1);
+	  }
+   }
+
+   &.info {
+	  background-color: rgb(42, 55, 148, 0.9);
+
+	  .infoIcon {
+		 background-color: rgb(42, 55, 148, 1);
+	  }
+   }
+
+   &.success {
+	  background-color: rgba(59, 149, 62, 0.9);
+
+	  &:hover {
+		 background-color: rgba(59, 149, 62, 1);
+	  }
+   }
+
+   .icon {
+	  width: 32px;
+   }
+
+   .text {
+	  flex: 1;
+	  margin: 3px 5px 0 5px;
+   }
+
+   button.close {
+	  color: #fff;
+	  font-weight: 300;
+	  width: 32px;
+
+	  &:hover {
+		 background: inherit;
+	  }
+   }
+}
+
+@keyframes snackbarSlideFromRight {
+   from {
+	  transform: translateX(100%);
+	  -webkit-transform: translateX(100%);
+   }
+   to {
+	  transform: translateX(0);
+	  -webkit-transform: translateX(0);
+   }
+}
+
+@keyframes snackbarSlideFromBottom {
+   from {
+	  bottom: 0;
+   }
+   to {
+	  bottom: 45px;
+   }
+}
+
+.sharerBox {
+   .icons {
+	  display: flex;
+	  padding: 15px 0 10px 0;
+
+	  > button {
+		 flex: 1;
+		 text-align: center;
+		 height: 55px !important;
+		 min-width: auto !important;
+	  }
+   }
+}
+
+.postPhotoTabs {
+   .tabsDiv {
+	  margin-bottom: 15px;
+   }
+
+   .postPhotoSelections {
+	  display: inline-block;
+
+	  button {
+		 margin: 0px 5px 5px 0px;
+		 width: 64px;
+		 height: 64px;
+
+		 img {
+			border-radius: 30px;
+			border: 2px solid #fff;
+		 }
+
+		 opacity: 0.5;
+
+		 &.selected {
+			opacity: 1;
+
+			img {
+			   border: 2px solid #cd2929;
+			}
+		 }
+	  }
+   }
+}
+
+.reactSelectStyle {
+   width: 100%;
+
+   > div:first-child {
+	  border-width: 0;
+	  border-bottom-width: 1px;
+	  border-radius: 0;
+	  box-shadow: none;
+   }
+}
+
+.newPostCard {
+   padding-bottom: 10px;
+
+   .postTextBar {
+	  display: flex;
+	  background: white;
+
+	  .userPhoto {
+		 width: 64px;
+		 height: 64px;
+		 border-radius: 32px;
+	  }
+
+	  .postText {
+		 flex: 1;
+		 margin-left: 10px;
+	  }
+   }
+
+   .infobar1 {
+	  margin-top: 10px;
+	  display: flex;
+
+	  .venueDiv {
+		 flex: 1;
+	  }
+
+	  .locationDiv {
+		 flex: 1;
+		 margin-top: 10px;
+		 margin-right: 30px;
+	  }
+
+	  .dateDiv {
+		 flex: 1;
+	  }
+
+	  @media only screen and (max-width: 1010px) {
+		 & {
+			flex-direction: column;
+		 }
+
+		 .locationDiv {
+			margin-right: 0px;
+		 }
+
+		 .dateDiv {
+			margin-top: 8px;
+		 }
+	  }
+   }
+}
+
+//# region Photo Upload
+.postPhotoFromDeviceContainer {
+   width: 100%;
+
+   .dragDropDiv {
+	  background: #eee;
+	  font-size: 16px;
+	  text-align: center;
+	  padding: 20px;
+	  border: 1px dashed #999;
+	  position: relative;
+
+	  &.dragging {
+		 border: 1px solid #666;
+		 background: #bbb;
+	  }
+   }
+
+   #postPhotoFiles {
+	  display: none;
+   }
+
+   label.iconText {
+	  display: flex;
+
+	  .text {
+		 margin-left: 5px;
+	  }
+   }
+}
+
+.photoThumbnails {
+   width: 100%;
+   display: flex;
+
+   > div {
+	  // display: inline-block;
+	  margin: 5px 5px 10px 0;
+	  position: relative;
+	  min-width: 64px;
+	  width: 64px;
+	  height: 64px;
+	  background: 50% 50% no-repeat;
+	  background-size: cover;
+
+	  .deleteIcon {
+		 position: absolute;
+		 right: 18px;
+		 bottom: -8px;
+		 background: var(--topBarBgColor);
+		 border-radius: 20px;
+		 padding: 4px 4px 0px 4px;
+
+		 &:hover {
+			color: white;
+		 }
+
+		 svg {
+			font-size: 16px;
+		 }
+
+		 &:hover {
+			background: var(--linkHoverColor);
+		 }
+	  }
+   }
+
+   &.selectable {
+	  > div {
+		 cursor: pointer;
+
+		 &.selected {
+			outline-offset: -3px;
+			outline: 3px solid blue;
+		 }
+	  }
+   }
+}
+
+//# endregion
+
+.pushNotifConcentBtnDiv {
+   text-align: right;
+   margin-top: 5px;
+
+   button {
+	  color: #666;
+
+	  svg {
+		 color: orangered;
+	  }
+   }
+}
+
+.postFilterDialog {
+   max-width: 1000px;
+   margin: 0 auto;
+
+   .listItemDiv {
+	  width: 100%;
+
+	  .checkboxFormGroup {
+		 display: flex;
+
+		 > * {
+			flex: 1;
+		 }
+
+		 span {
+			white-space: nowrap;
+		 }
+	  }
+   }
+}
+
+.addPlaceSelectPlaceDiv {
+   div {
+	  text-align: left;
+	  width: 100%;
+   }
+
+   .name {
+	  font-weight: bold;
+   }
+
+   .address {
+	  color: #999;
+	  font-weight: normal;
+   }
+}
+
+//#region Tribute
+.tribute-container {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: auto;
+   max-height: 300px;
+   max-width: 500px;
+   overflow: auto;
+   display: block;
+   z-index: 999999;
+}
+
+.tribute-container ul {
+   margin: 0;
+   margin-top: 2px;
+   padding: 0;
+   list-style: none;
+   background: #efefef;
+}
+
+.tribute-container li {
+   padding: 5px 5px;
+   cursor: pointer;
+}
+
+.tribute-container li.highlight {
+   background: #ddd;
+}
+
+.tribute-container li span {
+   font-weight: bold;
+}
+
+.tribute-container li.no-match {
+   cursor: default;
+}
+
+.tribute-container .menu-highlighted {
+   font-weight: bold;
+}
+
+//#endregion
+
+#newVersionRefreshBar {
+   position: fixed;
+   top: 60px;
+   left: 0;
+   text-align: center;
+   color: red;
+   background: white;
+   width: 100%;
+   padding: 15px 0;
+   z-index: 600;
+   box-shadow: 0px 0px 3px 2px #333 inset;
+}
+
+.userSelectOption {
+   display: flex;
+   flex-direction: row;
+
+   img {
+	  max-width: 32px;
+	  max-height: 32px;
+	  margin-right: 5px;
+   }
+
+   span {
+	  margin-top: 8px;
+   }
+}
+
+.unreadBalloon {
+   line-height: 19px;
+   border-radius: 8px;
+   display: inline;
+   position: absolute;
+   background: @accentSecondary;
+   padding: 0px 6px 0 6px;
+   color: white;
+   font-size: 11px;
+   box-shadow: 0px 0px 1px 1px #ccc;
+}
+
+.privateBoard {
+   max-width: 780px;
+   margin: 0px auto;
+   padding: 10px 10px 10px 10px;
+
+   .privateBoardTitle {
+	  font-size: 22px;
+	  font-weight: 400;
+	  margin-top: 0;
+
+	  .icon {
+		 font-size: 28px;
+		 color: #e2a600;
+		 vertical-align: top;
+	  }
+   }
+
+   .content {
+	  margin-left: 10px;
+   }
+}
+
+.reactSelect {
+   input {
+	  color: white !important;
+   }
+}
+
+.singlePostsList {
+   .post {
+	  text-align: center;
+	  display: block;
+	  margin-bottom: 10px;
+
+	  &:hover {
+		 background: #ccc;
+	  }
+   }
+}
+

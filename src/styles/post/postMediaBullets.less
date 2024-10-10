@@ -1,0 +1,55 @@
+.singlePost {
+
+   .postMediaBullets {
+	  top: calc(10px + env(safe-area-inset-top) / 5 * 4);
+   }
+}
+
+.postSummaryWrapperLnk {
+   .postMediaBullets {
+	  top: 10px;
+   }
+}
+
+.postMediaBullets {
+   position: absolute;
+   width: 100%;
+   z-index: 51;
+   display: flex;
+   // grid-auto-flow: column;
+   align-items: start;
+   will-change: contents;
+   border-radius: 1px;
+   user-select: none;
+   -webkit-user-select: none;
+   box-sizing: border-box;
+   min-height: 6px;
+
+   > div {
+	  margin-right: 8px;
+	  border-radius: 6px;
+	  padding: 1px;
+	  height: 4px;
+	  flex: 1;
+	  align-items: center;
+	  justify-content: center;
+	  will-change: contents;
+	  transition: padding-bottom 1s, background-color 0.5s;
+	  background: rgba(140, 140, 140, 1);
+	  box-shadow: rgba(0, 0, 0, 1) 0px 0px 3px 1px;
+
+	  &:first-child {
+		 margin-left: 8px;
+	  }
+
+	  &.selected {
+		 box-shadow: rgba(0, 0, 0, 1) 0px 0px 3px 1px;
+		 background-color: rgba(255, 255, 255, 1);
+	  }
+   }
+
+   .currentOfTotal {
+	  padding: 0 4px 0 5px;
+	  font-size: 14px;
+   }
+}

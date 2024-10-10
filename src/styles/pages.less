@@ -1,0 +1,293 @@
+@import (reference) '_vars.less';
+@import (reference) 'helpers.less';
+
+.addTopicPage {
+   border: none;
+}
+
+.myPage {
+   max-width: 1000px;
+   margin-left: auto;
+   margin-right: auto;
+
+   .formRow {
+	  display: flex;
+
+	  .rowIcon {
+		 font-size: 28px;
+		 margin-top: 30px;
+		 margin-right: 10px;
+		 color: #777;
+	  }
+   }
+}
+
+.notifPage {
+   .singleNotif {
+	  display: flex;
+	  flex-flow: wrap;
+	  padding: 10px 5px 5px 10px;
+	  // border-bottom: 1px solid #ccc;
+
+	  // &:hover {
+	  // 	background: rgb(240, 240, 240);
+	  // }
+
+	  strong {
+		 font-weight: 500;
+	  }
+
+	  &.read {
+		 opacity: 0.4;
+		 background: #111111;
+	  }
+
+	  &.highlight {
+		 background: #ffeeba;
+		 color: black;
+	  }
+
+	  .photoDiv {
+		 width: 80px;
+		 text-align: center;
+
+		 //svg {
+		 //	font-size: 48px;
+		 //	color: #aaa;
+		 //}
+		 .icon, .material-icons, .material-icons-outlined {
+			font-size: 48px;
+		 }
+
+		 img {
+			border-radius: 6px;
+			width: 64px;
+			height: 64px;
+		 }
+	  }
+
+	  .textDiv {
+		 flex: 1;
+		 margin-bottom: 8px;
+
+		 .msgInfo {
+			color: #999;
+			margin-top: 5px;
+			font-size: 14px;
+		 }
+	  }
+
+	  .actionBtns {
+		 display: flex;
+		 width: 50px;
+
+		 > button {
+			flex: 1;
+			padding: 5px 0;
+			border-radius: 10px;
+
+			.text {
+			   display: inline-block;
+			   vertical-align: top;
+			   margin: 5px 0 0 5px;
+			}
+
+			&.markReadBtn {
+			   a {
+				  color: black;
+			   }
+			}
+		 }
+	  }
+
+	  .dateTime {
+		 margin: 0px 0 0px 5px;
+		 color: #0082c8;
+		 font-size: 12px;
+
+		 span {
+			white-space: nowrap;
+		 }
+	  }
+   }
+
+   .baseNotifFadingLine {
+	  .fadingLineCenterFn(#999, #222);
+   }
+}
+
+.nextPostPage {
+   text-align: center;
+
+   .slogan {
+	  font-weight: 400;
+	  color: #777;
+	  text-shadow: 0px 1px 2px #fff;
+	  max-width: 900px;
+	  margin: 20px auto 30px auto;
+   }
+}
+
+#hubsManagePage {
+   .parentHubRow {
+	  display: flex;
+	  flex-wrap: wrap;
+
+	  // border-bottom: 1px solid #ccc;
+	  margin-bottom: 20px;
+
+	  > button a {
+		 color: #999;
+	  }
+
+	  .ops {
+		 svg {
+			cursor: pointer;
+		 }
+	  }
+
+	  .hubRow {
+		 width: 100%;
+		 display: flex;
+		 flex-wrap: wrap;
+		 padding: 5px 0px 0px 20px;
+
+		 .desc {
+			width: 100%;
+			flex-basis: 100%;
+			font-style: italic;
+			color: #999;
+		 }
+	  }
+   }
+}
+
+.hubsListPage {
+   .topBar {
+	  display: flex;
+	  flex-direction: row;
+
+	  .filterDiv {
+		 flex: 1;
+		 display: flex;
+		 flex-direction: row;
+		 padding-right: 10px;
+
+		 .icon {
+			width: 50px;
+
+			svg {
+			   font-size: 40px;
+			   padding: 5px 0 0 5px;
+			}
+		 }
+
+		 .input {
+			flex: 1;
+		 }
+	  }
+   }
+
+   .hubRow {
+	  margin-bottom: 30px;
+	  display: flex;
+	  flex-direction: row;
+	  padding-bottom: 2px;
+	  border-bottom: 1px solid #ccc;
+
+	  .name {
+		 font-weight: bold;
+		 font-size: 18px;
+		 margin-bottom: 5px;
+		 flex: 1;
+	  }
+
+	  .buttons {
+		 display: flex;
+		 flex-direction: row;
+		 margin-top: 5px;
+		 flex: 1;
+
+		 button:not(:first-child):not(:last-child) {
+			margin-left: 5px;
+			margin-right: 5px;
+		 }
+
+		 .favBtn {
+			.material-icons {
+			   color: gold;
+			}
+		 }
+
+		 .viewBtn {
+			flex: 1;
+		 }
+	  }
+   }
+}
+
+#menuPage {
+   a,
+   button {
+	  border-bottom: 1px solid #777;
+   }
+}
+
+.postThanksDiv {
+   a {
+	  display: flex;
+	  flex-direction: row;
+
+	  img {
+		 width: 48px;
+	  }
+
+	  .username {
+		 padding-top: 10px;
+		 padding-left: 10px;
+	  }
+   }
+}
+
+.postBuilderHomeDiv {
+   .draftPostsList {
+	  a {
+		 margin-bottom: 10px;
+	  }
+   }
+}
+
+.iosPushTutorialDiv {
+   img {
+	  max-width: 100%;
+   }
+}
+
+.pushNotifAllowTutorial {
+   img {
+	  max-width: 100%;
+   }
+}
+
+.userProfileDiv {
+   .userProfileTopRow {
+	  display: flex;
+	  align-items: center;
+
+	  .actionBtns {
+		 height: 100%;
+	  }
+
+	  h1 {
+		 display: flex;
+		 align-items: center;
+		 flex: 1;
+		 margin: 0;
+
+		 img {
+			border-radius: 6px;
+			margin-right: 10px;
+		 }
+	  }
+   }
+}

@@ -1,0 +1,105 @@
+@import (reference) '_vars';
+
+// Generic mentions
+.mentions {
+   textarea {
+	  color: white;
+   }
+}
+
+.writeCommentDiv {
+   display: flex;
+   margin: 5px 0 5px 0;
+
+   .txtbox {
+	  display: block;
+	  flex: 1;
+	  margin-right: 10px;
+
+	  // .textEditor {
+	  // 	background: #fbfbfb;
+	  // 	p {
+	  // 		margin: 0;
+	  // 	}
+	  // }
+
+	  .mentions__control {
+		 background-color: rgba(@inputBgColor, 1);
+	  }
+
+	  textarea {
+		 // border: none;
+		 // outline: none;
+		 // padding: 8px 6px 6px 6px;
+		 // width: 100%;
+		 border-radius: 3px;
+		 // border: 1px solid @inputBgColor;
+		 // resize: none;
+		 color: #fff;
+
+		 &:focus {
+			background-color: rgba(@inputBgColor, 0.8);
+		 }
+
+		 &::placeholder {
+			// color: rgb(170, 170, 170);
+		 }
+	  }
+   }
+
+   .btn {
+	  margin-top: 5px;
+
+	  span {
+		 cursor: pointer;
+		 color: #888;
+	  }
+   }
+}
+
+// Comments list
+div.commentsList {
+   padding: 10px 10px 0 10px;
+
+   .singleComment {
+	  display: flex;
+	  margin: 0 5px 10px 5px;
+	  border-bottom: 1px solid #444;
+	  padding: 5px 0;
+
+	  @media @mobile {
+		 text-align: left;
+	  }
+
+	  .userImgLink {
+		 margin: 2px 6px 0 0;
+
+		 img {
+			width: 32px;
+			height: 32px;
+			border-radius: 5px;
+		 }
+	  }
+
+	  .txt {
+		 flex: 1;
+
+		 .usernameLink {
+			font-weight: 500;
+		 }
+
+		 p {
+			margin: 0;
+		 }
+	  }
+
+	  .createdAt {
+		 font-size: 12px;
+		 color: #999;
+	  }
+   }
+}
+
+.popupBackdrop {
+   height: auto;
+}

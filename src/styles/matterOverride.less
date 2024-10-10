@@ -1,0 +1,39 @@
+.matter-textfield-filled {
+	@focusActiveBorder: 1px solid #666;
+
+	border: 1px solid rgba(0, 0, 0, 0);
+	border-radius: 6px;
+
+	&:focus-within,
+	&:hover {
+		border: @focusActiveBorder;
+	}
+
+	&:hover input,
+	&:hover textarea {
+		background-color: rgba(@inputBgColor, 0.9);
+	}
+
+	input,
+	textarea {
+		caret-color: auto;
+		border-radius: 6px;
+		border-bottom: none;
+		resize: none;
+		background-color: rgba(@inputBgColor, 1);
+
+		&:focus {
+			background-color: rgba(@inputBgColor, 0.8);
+			resize: vertical;
+			color: white;
+		}
+
+		&:focus + span {
+			color: rgba(var(--matter-onsurface-rgb, 0, 0, 0), 0.6);
+		}
+
+		&:focus + span::after {
+			transform: scale(0) !important;
+		}
+	}
+}

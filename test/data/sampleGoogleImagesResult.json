@@ -1,0 +1,238 @@
+{
+	"kind": "customsearch#search",
+	"url": {
+		 "type": "application/json",
+		 "template": "https://www.googleapis.com/customsearch/v1?q={searchTerms}&num={count?}&start={startIndex?}&lr={language?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
+	},
+	"queries": {
+		 "request": [
+			  {
+					"title": "Google Custom Search - Dublin,Ireland",
+					"totalResults": "164000000",
+					"searchTerms": "Dublin,Ireland",
+					"count": 10,
+					"startIndex": 1,
+					"inputEncoding": "utf8",
+					"outputEncoding": "utf8",
+					"safe": "off",
+					"cx": "003122414988309096743:iy-csrnbn_8",
+					"searchType": "image"
+			  }
+		 ],
+		 "nextPage": [
+			  {
+					"title": "Google Custom Search - Dublin,Ireland",
+					"totalResults": "164000000",
+					"searchTerms": "Dublin,Ireland",
+					"count": 10,
+					"startIndex": 11,
+					"inputEncoding": "utf8",
+					"outputEncoding": "utf8",
+					"safe": "off",
+					"cx": "003122414988309096743:iy-csrnbn_8",
+					"searchType": "image"
+			  }
+		 ]
+	},
+	"context": {
+		 "title": "EscaperApp"
+	},
+	"searchInformation": {
+		 "searchTime": 0.624696,
+		 "formattedSearchTime": "0.62",
+		 "totalResults": "164000000",
+		 "formattedTotalResults": "164,000,000"
+	},
+	"items": [
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Flights to Dublin, Ireland (DUB) | WestJet",
+			  "htmlTitle": "Flights to <b>Dublin</b>, <b>Ireland</b> (DUB) | WestJet",
+			  "link": "https://www.westjet.com/book/resources/_prod/img/hero/dublin-ireland.jpg",
+			  "displayLink": "www.westjet.com",
+			  "snippet": "Flights to Dublin, Ireland (DUB) | WestJet",
+			  "htmlSnippet": "Flights to <b>Dublin</b>, <b>Ireland</b> (DUB) | WestJet",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.westjet.com/book/flights-to-dublin-ireland",
+					"height": 324,
+					"width": 828,
+					"byteSize": 308570,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpb8a0ccLX9hqRo0OTRt10oTGhmy_KUnI3CNiON8USZ-jO_PHF45K5VUg",
+					"thumbnailHeight": 56,
+					"thumbnailWidth": 144
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "What to do in Dublin, Ireland",
+			  "htmlTitle": "What to do in <b>Dublin</b>, <b>Ireland</b>",
+			  "link": "https://www.nationalgeographic.com/content/dam/travel/2017-digital/dublin/river-bridge-dublin-ireland.jpg",
+			  "displayLink": "www.nationalgeographic.com",
+			  "snippet": "What to do in Dublin, Ireland",
+			  "htmlSnippet": "What to do in <b>Dublin</b>, <b>Ireland</b>",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.nationalgeographic.com/travel/destinations/europe/ireland/best-trips-dublin/",
+					"height": 2000,
+					"width": 3000,
+					"byteSize": 2034101,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-i6iNPTEql7anN-MJsufoIxtiMEtRRx_6J_XZo18N_GPv0YzRbo4-pBS2",
+					"thumbnailHeight": 100,
+					"thumbnailWidth": 150
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Dublin, Ireland | Manhattan College | Riverdale, NY",
+			  "htmlTitle": "<b>Dublin</b>, <b>Ireland</b> | Manhattan College | Riverdale, NY",
+			  "link": "https://content.manhattan.edu/study-abroad/destination_images/page-view-photos/dublin.jpg",
+			  "displayLink": "manhattan.edu",
+			  "snippet": "Dublin, Ireland | Manhattan College | Riverdale, NY",
+			  "htmlSnippet": "<b>Dublin</b>, <b>Ireland</b> | Manhattan College | Riverdale, NY",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://manhattan.edu/academics/study-abroad/study-abroad-programs/dublin-ireland.php",
+					"height": 576,
+					"width": 767,
+					"byteSize": 498949,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW9OkOTQpPAR6PWb6tzTeEi94sR2eehYWXtKCr3-cHT3m9tDNVdA9z2-Eq",
+					"thumbnailHeight": 107,
+					"thumbnailWidth": 142
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Dublin 2018: Best of Dublin, Ireland Tourism - TripAdvisor",
+			  "htmlTitle": "<b>Dublin</b> 2018: Best of <b>Dublin</b>, <b>Ireland</b> Tourism - TripAdvisor",
+			  "link": "https://media-cdn.tripadvisor.com/media/photo-s/03/9b/2d/c6/dublin.jpg",
+			  "displayLink": "www.tripadvisor.com",
+			  "snippet": "Dublin 2018: Best of Dublin, Ireland Tourism - TripAdvisor",
+			  "htmlSnippet": "<b>Dublin</b> 2018: Best of <b>Dublin</b>, <b>Ireland</b> Tourism - TripAdvisor",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.tripadvisor.com/Tourism-g186605-Dublin_County_Dublin-Vacations.html",
+					"height": 331,
+					"width": 550,
+					"byteSize": 45430,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdePncbePP7zDsaJYCmNAaUGtdMU-DZFWohHU3RF--j2R6O67eLGYNBSIL",
+					"thumbnailHeight": 80,
+					"thumbnailWidth": 133
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Study Abroad in Dublin, Ireland - January Term 2019",
+			  "htmlTitle": "Study Abroad in <b>Dublin</b>, <b>Ireland</b> - January Term 2019",
+			  "link": "https://www.aifsabroad.com/images/country-page/aifsabroad-share-image-Dublin.jpg",
+			  "displayLink": "www.aifsabroad.com",
+			  "snippet": "Study Abroad in Dublin, Ireland - January Term 2019",
+			  "htmlSnippet": "Study Abroad in <b>Dublin</b>, <b>Ireland</b> - January Term 2019",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.aifsabroad.com/ireland/dublin/jterm/",
+					"height": 630,
+					"width": 1200,
+					"byteSize": 763954,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWS6JKoYsjRnWTYWCqMTXTvZCBYG2qy6Lr1O4sUugjOWQnLtpQKTkBz6I",
+					"thumbnailHeight": 79,
+					"thumbnailWidth": 150
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Dublin Ireland - ThingLink",
+			  "htmlTitle": "<b>Dublin Ireland</b> - ThingLink",
+			  "link": "http://s3.thingpic.com/images/Yk/Toxjsv9sY1A6nJPwcJgYGwyr.jpeg",
+			  "displayLink": "www.thinglink.com",
+			  "snippet": "Dublin Ireland - ThingLink",
+			  "htmlSnippet": "<b>Dublin Ireland</b> - ThingLink",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.thinglink.com/scene/753284579359457280",
+					"height": 667,
+					"width": 1000,
+					"byteSize": 335729,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYlPYHB1TqFJEJqH7SC5hNLsv1EYXeevypz0UPrqslVJOYjoycngJDZOk",
+					"thumbnailHeight": 99,
+					"thumbnailWidth": 149
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Dublin | Riot Games",
+			  "htmlTitle": "<b>Dublin</b> | Riot Games",
+			  "link": "https://www.riotgames.com/darkroom/1440/0dffc174c72ce3dbaa23a8650557b624:79c68bf22b496b9ffdab7bcb34c930d1/dublin.jpg",
+			  "displayLink": "www.riotgames.com",
+			  "snippet": "Dublin | Riot Games",
+			  "htmlSnippet": "<b>Dublin</b> | Riot Games",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.riotgames.com/en/work-with-us/offices/dublin",
+					"height": 809,
+					"width": 1439,
+					"byteSize": 214095,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWobOV0eyMGj2jeFaE1Kujq9B1QMzb9GFYc81xo15f_322ijlZsmQCnJ0",
+					"thumbnailHeight": 84,
+					"thumbnailWidth": 150
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Dublin city: see, do, experience | Ireland.com",
+			  "htmlTitle": "<b>Dublin</b> city: see, do, experience | <b>Ireland</b>.com",
+			  "link": "https://d5qsyj6vaeh11.cloudfront.net/images/destinations/dublin/dublin-main/dublin-living-city-node/dublin-background.jpg",
+			  "displayLink": "www.ireland.com",
+			  "snippet": "Dublin city: see, do, experience | Ireland.com",
+			  "htmlSnippet": "<b>Dublin</b> city: see, do, experience | <b>Ireland</b>.com",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.ireland.com/en-us/what-is-available/sightseeing/destinations/republic-of-ireland/dublin/dublin-city/",
+					"height": 960,
+					"width": 1280,
+					"byteSize": 227600,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4rp3MwAv2KoqdRhJWEiK7nBq4RjwEqKHgRQ9uHi6YQqiWG7GePWXppaNb",
+					"thumbnailHeight": 113,
+					"thumbnailWidth": 150
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "Dublin Vacation, Travel Guide and Tour Information - AARP",
+			  "htmlTitle": "<b>Dublin</b> Vacation, Travel Guide and Tour Information - AARP",
+			  "link": "https://travel.aarp.org/content/dam/travel/destination-images/ireland/dublin/1400-hero-dublin-ireland-bridge.jpg",
+			  "displayLink": "travel.aarp.org",
+			  "snippet": "Dublin Vacation, Travel Guide and Tour Information - AARP",
+			  "htmlSnippet": "<b>Dublin</b> Vacation, Travel Guide and Tour Information - AARP",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://travel.aarp.org/destinations/ireland/dublin/",
+					"height": 720,
+					"width": 1400,
+					"byteSize": 225875,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBw3iDI1VC1bEMvjJw2KxYxRvPO_M0owZFnyt37QvnlgusC7jBjOCM-68",
+					"thumbnailHeight": 77,
+					"thumbnailWidth": 150
+			  }
+		 },
+		 {
+			  "kind": "customsearch#result",
+			  "title": "The five best and five worst things about living in Dublin ...",
+			  "htmlTitle": "The five best and five worst things about living in <b>Dublin</b> ...",
+			  "link": "http://turcooo.com/kanallar/Dublin-Ireland-Life.jpg",
+			  "displayLink": "www.irishcentral.com",
+			  "snippet": "The five best and five worst things about living in Dublin ...",
+			  "htmlSnippet": "The five best and five worst things about living in <b>Dublin</b> ...",
+			  "mime": "image/jpeg",
+			  "image": {
+					"contextLink": "https://www.irishcentral.com/travel/the-five-best-and-five-worst-things-about-living-in-dublin",
+					"height": 405,
+					"width": 640,
+					"byteSize": 190112,
+					"thumbnailLink": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRR82GxxBG7IWxP6rZQ-R20dkNhGiYei1ETS44WiuZPupXnrLVNbhdObf4",
+					"thumbnailHeight": 87,
+					"thumbnailWidth": 137
+			  }
+		 }
+	]
+}

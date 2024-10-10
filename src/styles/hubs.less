@@ -1,0 +1,96 @@
+.hubList {
+   .hubBtn {
+	  padding: 0 0 0 10px;
+	  border-bottom: 0px;
+	  min-height: 30px;
+	  display: flex;
+	  vertical-align: middle;
+	  align-items: center;
+
+	  @media @desktop {
+		 &:hover,
+		 &.selected:hover {
+			background: rgb(#333);
+		 }
+	  }
+
+	  &.active, &.selected.active {
+		 background: @linkClickFeedbackColor;
+	  }
+
+	  .iconCol {
+		 width: 40px;
+		 height: 40px;
+		 display: grid;
+		 vertical-align: middle;
+		 align-items: center;
+
+		 span {
+			font-size: 28px;
+			margin-top: 2px;
+		 }
+
+		 img {
+			width: 32px;
+			border-radius: 3px;
+		 }
+	  }
+
+	  .textCol {
+	  }
+
+	  &.disabled {
+		 color: #999;
+	  }
+   }
+
+   .showHideFavHubsBtn {
+	  padding: 5px 10px 5px 45px;
+	  display: block;
+	  width: 100%;
+	  text-align: left;
+	  font-size: 16px;
+   }
+
+   .star {
+	  float: right;
+	  padding: 5px 5px;
+
+	  &.fav {
+		 color: yellow;
+	  }
+   }
+
+   .fadingLineCenter {
+	  display: none;
+   }
+}
+
+.selectableHubListWrapper {
+   .hubList {
+	  .singleHubButton {
+		 display: flex;
+		 width: 100%;
+		 vertical-align: center;
+		 border-radius: 0;
+
+		 img {
+			width: 32px;
+			height: 32px;
+			margin-right: 10px;
+		 }
+	  }
+   }
+
+   .actionButtons {
+	  display: block;
+	  width: 100%;
+	  bottom: 0;
+	  left: 0;
+	  position: sticky;
+
+	  button {
+		 width: 100%;
+	  }
+   }
+}

@@ -1,0 +1,116 @@
+#postsPanel {
+   .singleMedia {
+	  position: relative;
+
+	  height: 0;
+	  width: 0;
+
+	  overflow: hidden;
+	  //display: none;
+	  visibility: hidden;
+
+	  background-repeat: no-repeat;
+
+	  &.stretch {
+		 background-position: center;
+		 background-size: cover; // Use "contain" for 100% horizontal fit or cover for stretched out
+	  }
+
+	  &:not(.stretch) {
+		 background-position: center center;
+		 background-size: contain; // Use "contain" for 100% horizontal fit or cover for stretched out
+	  }
+
+	  &.active {
+		 //display: flex;
+		 visibility: visible;
+		 height: 100%;
+		 width: 100%;
+	  }
+
+	  img {
+		 max-width: 100%;
+		 max-height: 100%;
+		 width: auto;
+		 height: auto;
+		 margin: 0 auto;
+		 object-fit: contain;
+	  }
+
+	  .mediaDescription {
+		 position: absolute;
+		 bottom: 25px;
+		 padding: 10px;
+		 color: #ddd;
+		 display: flex;
+		 font-size: 16px;
+		 left: 0px;
+		 right: 40px;
+		 border-top-right-radius: 4px;
+		 z-index: 91;
+		 user-select: none;
+		 -webkit-user-select: none;
+
+		 .more {
+			color: white;
+			font-weight: 400;
+		 }
+
+		 .less {
+			color: white;
+			font-weight: 400;
+		 }
+
+		 .text {
+			width: 100%;
+			display: inline-block;
+			padding-right: 3px;
+			text-shadow: 0px 1px 2px #000;
+		 }
+
+		 &.collapsed .text {
+			display: inline-block;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		 }
+	  }
+   }
+
+   .singlePost.active {
+	  .singleMedia {
+		 transition: transform 0.1s ease;
+	  }
+
+	  &.touchingArea-left {
+		 .singleMedia {
+			box-shadow: inset -10px 0 10px rgba(0, 0, 0, 0.1);
+			transform: perspective(600px) rotateY(-5deg);
+		 }
+	  }
+
+	  &.touchingArea-right {
+		 .singleMedia {
+			box-shadow: inset 10px 0 10px rgba(0, 0, 0, 0.1);
+			transform: perspective(600px) rotateY(5deg);
+		 }
+	  }
+   }
+}
+
+body.isBot {
+   #postsPanel {
+	  .singleMedia {
+		 .mediaDescription {
+			position: initial;
+			bottom: initial;
+
+			.text {
+			   overflow: auto;
+			   text-overflow: initial;
+			   white-space: initial;
+			}
+		 }
+	  }
+   }
+}

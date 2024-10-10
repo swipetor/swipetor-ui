@@ -1,0 +1,31 @@
+{
+	"compileOnSave": true,
+	"compilerOptions": {
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"target": "es2018",
+		"module": "commonjs",
+		"sourceMap": true,
+		// "sourceRoot": "app",
+		"lib": ["es2017", "es2016", "dom", "es2015", "es5", "es6", "webworker" /*, "scripthost"*/],
+		"jsx": "react",
+		"moduleResolution": "node",
+		"noUnusedLocals": false,
+		"noUnusedParameters": false,
+		"removeComments": false,
+		"preserveConstEnums": true,
+		"skipLibCheck": true,
+		"pretty": true,
+		"strict": true,
+		"typeRoots": ["./src/common/types", "./node_modules/@types"],
+		"noImplicitReturns": true,
+		"outDir": "dist",
+		"baseUrl": "",
+		"paths": {
+			"src/*": ["src/*"]
+		}
+	},
+	"include": ["src/**/*"]
+}

@@ -1,0 +1,344 @@
+@import (reference) '_vars.less';
+
+.boardPanel.pmBoardPanel {
+   .pmThreadsPanel {
+	  flex: 1;
+	  width: 100%;
+
+	  @media @desktop {
+		 width: 500px;
+	  }
+
+	  .panelBtn {
+		 padding: 8px 5px 10px 5px;
+
+		 .textCol {
+			padding-top: 7px;
+		 }
+
+		 .lastMsg {
+			font-weight: normal;
+			color: #aaa;
+			font-size: 12px;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		 }
+
+		 .unreadBalloon {
+			float: right;
+			right: 5px;
+		 }
+	  }
+   }
+
+   #pmMsgsPanel {
+	  flex: 2;
+
+	  @media @mobile {
+		 max-width: 100vw;
+	  }
+
+	  .header {
+		 .iconText {
+			display: flex;
+
+			.icon {
+			   margin-right: 3px;
+			}
+
+			.text {
+			   margin-top: 6px;
+			}
+		 }
+
+		 .right {
+			.starIcon {
+			   color: #ffc83d;
+			   cursor: pointer;
+			}
+		 }
+	  }
+
+	  .body {
+		 .singleMsgWrapper {
+			display: flex;
+			margin-top: 10px;
+
+			.userImgLink {
+			   vertical-align: middle;
+			   margin-right: 5px;
+			   margin-left: 5px;
+
+			   img {
+				  width: 60px;
+				  height: 60px;
+				  border-radius: 8px;
+			   }
+			}
+
+			&.myMsg {
+			   justify-content: flex-start;
+			   align-items: flex-start;
+			   flex-direction: row-reverse;
+
+			   .singleMsg {
+				  background: @accentDarker1;
+			   }
+			}
+
+			.singleMsg {
+			   padding: 10px;
+			   margin: 0px 0px 0px 0px;
+			   box-shadow: 0 0 3px #ccc;
+			   border-radius: 6px;
+			   width: fit-content;
+			   min-width: 40%;
+			   max-width: 80%;
+			   clear: both;
+
+			   .usernameLink {
+				  color: @accentColor;
+			   }
+
+			   .createdAt {
+				  color: #999;
+				  font-size: 13px;
+				  margin-left: 4px;
+			   }
+
+			   &.theirMsg {
+				  background: @accentLighter2;
+			   }
+
+			   .txt {
+				  //display: block;
+			   }
+			}
+		 }
+	  }
+
+	  .footer {
+		 width: initial;
+		 max-width: initial;
+
+		 .writeMsgDiv {
+			display: flex;
+			width: 100%;
+			padding: 5px 0 5px 5px;
+			background: #000;
+			box-shadow: 0 -2px 3px 0px rgba(30, 30, 30, 0.1);
+			max-width: 100vw;
+
+			.txtbox {
+			   display: block;
+			   flex: 1;
+			   margin-right: 10px;
+			   max-width: calc(100% - 50px);
+
+			   textarea {
+				  resize: vertical;
+			   }
+			}
+
+			.btn {
+			   width: 40px;
+			   text-align: center;
+			   margin-top: 5px;
+
+			   span {
+				  cursor: pointer;
+			   }
+			}
+		 }
+
+		 .expired {
+			width: 100%;
+		 }
+	  }
+   }
+
+   #newPmPanel {
+	  flex: 2;
+
+	  .header {
+		 > a {
+			display: flex;
+			align-items: center;
+		 }
+	  }
+   }
+}
+
+.newPmPopup {
+   min-height: 300px;
+
+   .goBtn {
+	  width: 100%;
+
+	  .icon {
+		 vertical-align: middle;
+	  }
+   }
+}
+
+//#region Old Styles
+/*.msgthreadContainer {
+   padding-bottom: 50px;
+
+   h1 {
+	  position: fixed;
+	  background: white;
+	  padding: 10px;
+	  margin-top: -10px;
+	  border-radius: 20px;
+	  box-shadow: 0 6px 6px -6px #ccc;
+
+	  svg {
+		 margin-bottom: -8px;
+		 font-size: 32px;
+	  }
+   }
+
+   .msgsContainer {
+	  .msgContainer {
+		 margin: 20px 0 0 0;
+
+		 .msgRow {
+			display: flex;
+		 }
+
+		 .msg {
+			padding: 8px 12px;
+			border-radius: 6px;
+			clear: both;
+			max-width: 75%;
+			min-width: 200px;
+			margin: 0 5px;
+		 }
+
+		 .userPhoto img {
+			width: 32px;
+			border-radius: 16px;
+		 }
+
+		 .user {
+			padding: 3px 5px 0px 5px;
+			font-weight: 400;
+			white-space: nowrap;
+		 }
+
+		 &.sent {
+			.msgRow {
+			   flex-direction: row-reverse;
+			}
+
+			.msg {
+			   background: #6eabea;
+			   color: white;
+			   text-align: right;
+			   float: right;
+			}
+
+			.userPhoto {
+			   float: right;
+			}
+
+			.user {
+			   text-align: right;
+			   color: #000;
+			   margin-right: 36px;
+			}
+		 }
+
+		 &.received {
+			.msg {
+			   float: left;
+			   background: #ccc;
+			   color: #000;
+			}
+
+			.userPhoto {
+			   float: left;
+			}
+
+			.user {
+			   margin-left: 36px;
+			}
+		 }
+	  }
+   }
+
+   .writeDivContainer {
+	  position: fixed;
+	  left: 0;
+	  bottom: 0;
+	  width: 100%;
+	  background: white;
+	  box-shadow: 0 6px 4px 6px #ccc;
+
+	  .writeDiv {
+		 max-width: 800px;
+		 margin: 0 auto;
+		 display: flex;
+		 padding: 10px;
+
+		 .textbox {
+			flex: 1;
+		 }
+
+		 .btn {
+			width: 60px;
+			margin-left: 10px;
+		 }
+	  }
+   }
+}
+
+.msgThreadsPage {
+   .unread {
+	  background: rgba(110, 171, 234, 0.3);
+   }
+
+   .threadLink {
+	  display: flex;
+	  width: 100%;
+
+	  button {
+		 text-align: left;
+	  }
+
+	  > .img {
+		 width: 80px;
+
+		 img {
+			width: 64px;
+			height: 64px;
+			border-radius: 36px;
+		 }
+	  }
+
+	  > .usernames {
+		 flex: 1;
+		 margin: 5px 0 0 10px;
+		 font-weight: 400;
+		 overflow: hidden;
+		 text-align: left;
+
+		 .lastMsg {
+			color: #999;
+			font-weight: normal;
+			font-size: 13px;
+			margin-top: 5px;
+			width: inherit;
+			text-transform: none;
+
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+		 }
+	  }
+   }
+}
+*/
+//#endregion

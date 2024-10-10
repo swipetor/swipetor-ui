@@ -1,0 +1,223 @@
+@import (reference) '_vars.less';
+
+a {
+   color: var(--accentColor);
+   text-decoration: none;
+   outline: none;
+
+   &:link,
+   &:visited {
+	  color: @accentColor;
+	  text-decoration: none;
+	  outline: none;
+   }
+
+   @media @desktop {
+	  &:hover {
+		 text-decoration: none;
+	  }
+   }
+
+   &:active {
+	  text-decoration: none;
+   }
+
+   &.red {
+	  background: #ce3d4d;
+	  color: White;
+
+	  @media @desktop {
+		 &:hover {
+			color: white;
+		 }
+	  }
+   }
+}
+
+
+button {
+   border: none;
+   cursor: pointer;
+   background: transparent;
+   color: #999;
+   font-size: 16px;
+   font-weight: 300;
+   font-family: 'Roboto', sans-serif;
+
+   @media @desktop {
+	  &:hover {
+		 background: @accentLighter2;
+	  }
+   }
+
+   //&.active {
+   //  filter: brightness(0.8);
+   //}
+}
+
+a.btn,
+label.btn {
+   color: #fff;
+   font-weight: 300;
+   font-family: 'Roboto', sans-serif;
+   padding: 5px;
+   cursor: pointer;
+   // border-radius: 4px;
+
+   @media @desktop {
+	  &:hover {
+		 color: #aaa;
+		 background: #333;
+	  }
+   }
+
+   &.active {
+	  // filter: brightness(1.2);
+	  background: #fff;
+	  color: #000;
+   }
+}
+
+.mainBtn,
+a.mainBtn,
+button.main {
+   background: @accentSecondary;
+   border-radius: 3px;
+   padding: 10px;
+   color: white;
+   font-size: 14px;
+   font-weight: normal;
+   text-align: center;
+   box-sizing: border-box;
+   outline-color: @accentDarker1;
+
+   &:link {
+	  color: white;
+   }
+
+   @media @desktop {
+	  &:hover {
+		 background: @accentLighter1;
+	  }
+   }
+
+   &.active {
+	  background: white;
+	  color: @accentSecondary;
+	  filter: none;
+   }
+
+   &:disabled {
+	  background: #aaa;
+	  border-color: white;
+	  color: #eee;
+
+	  &.active {
+		 color: #eee;
+	  }
+   }
+
+   &.red {
+	  @bgColor: #c54c1f;
+	  background: @bgColor;
+
+	  @media @desktop {
+		 &:hover {
+			background: lighten(@bgColor, 3%);
+		 }
+	  }
+
+	  &.active {
+		 background: lighten(@bgColor, 10%);
+		 color: @bgColor;
+		 filter: none;
+	  }
+   }
+
+   &.gold {
+	  background: @goldColor;
+	  color: black;
+
+	  @media @desktop {
+		 &:hover {
+			background: lighten(@goldColor, 10%);
+		 }
+	  }
+
+	  &.active {
+		 background: lighten(@goldColor, 10%);
+		 color: white;
+		 filter: none;
+	  }
+   }
+
+   &.grey {
+	  @bgColor: rgb(200, 200, 200);
+	  background: @bgColor;
+	  color: #000;
+
+	  @media @desktop {
+		 &:hover {
+			background: darken(@bgColor, 10%);
+		 }
+	  }
+
+	  &.active {
+		 background: darken(@bgColor, 40%);
+		 color: @bgColor;
+		 filter: none;
+	  }
+   }
+
+   &.dark {
+	  @bgColor: rgb(30, 30, 30);
+	  background: @bgColor;
+	  color: #aaa;
+
+	  @media @desktop {
+		 &:hover {
+			background: lighten(@bgColor, 10%);
+		 }
+	  }
+
+	  &.active {
+		 background: lighten(@bgColor, 40%);
+		 color: @bgColor;
+		 filter: none;
+	  }
+   }
+
+   &.white {
+	  @bgColor: rgb(255, 255, 255);
+	  background: @bgColor;
+	  color: #666;
+
+	  @media @desktop {
+		 &:hover {
+			background: darken(@bgColor, 10%);
+		 }
+	  }
+
+	  &.active {
+		 background: darken(@bgColor, 40%);
+		 color: @bgColor;
+		 filter: none;
+	  }
+   }
+
+   &.transparent {
+	  background: transparent;
+	  color: white;
+
+	  @media @desktop {
+		 &:hover {
+			background: rgb(30, 30, 30);
+		 }
+	  }
+
+	  &.active {
+		 background: @linkHoverColor;
+		 filter: none;
+	  }
+   }
+}

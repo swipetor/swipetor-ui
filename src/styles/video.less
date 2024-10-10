@@ -1,0 +1,98 @@
+@import (reference) '_vars.less';
+
+.singleMedia.video {
+   z-index: 50;
+   overflow: hidden;
+   position: relative;
+
+   > .playerContainer {
+	  height: 100%;
+	  width: 100%;
+	  overflow: hidden;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+
+	  video {
+		 outline: none;
+		 width: 100%;
+		 height: 100%;
+		 object-fit: contain;
+		 pointer-events: none;
+	  }
+   }
+
+   &.stretch {
+	  > .playerContainer {
+		 video {
+			object-fit: cover;
+		 }
+	  }
+   }
+
+   .video-js {
+	  width: 100vw;
+	  height: 100%;
+
+	  display: grid;
+	  vertical-align: middle;
+	  align-items: center;
+
+	  .vjs-big-play-button {
+		 left: calc(50% - 45px);
+		 // top: calc(50% - 50px);
+		 top: inherit;
+	  }
+
+	  // display: block;
+	  // margin: 0 auto;
+	  // object-fit: contain;
+
+
+	  &.vjs-playing.vjs-has-started,
+	  &:not(.vjs-paused) {
+		 .playButton {
+			//display: none;
+			visibility: hidden;
+			width: 150px;
+			height: 150px;
+			background-color: rgba(0, 0, 0, 0.1);
+
+			span {
+			   font-size: 48px;
+			   opacity: 0;
+			}
+		 }
+	  }
+   }
+
+   .vjs-default-skin.vjs-playing .vjs-big-play-button {
+	  display: none;
+   }
+
+   .vjs-controls-disabled .vjs-big-play-button,
+   .vjs-has-started .vjs-big-play-button,
+   .vjs-using-native-controls .vjs-big-play-button,
+   .vjs-error .vjs-big-play-button {
+	  display: block;
+   }
+
+   .vjs-control-bar {
+	  background: transparent;
+   }
+}
+
+.postBuilderDiv {
+   .vjs-time-control {
+	  display: block;
+   }
+
+   .vjs-remaining-time {
+	  display: none;
+   }
+}
+
+// Hide cast button on videos
+video::-internal-media-controls-overlay-cast-button {
+   display: none;
+}
