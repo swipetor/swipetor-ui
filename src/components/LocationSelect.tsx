@@ -19,7 +19,15 @@ interface LocationSelectProps {
 
 type LocationSelectElem = { value: number; label: string };
 
-const LocationSelect: React.FC = ({ placeholder, type, onSelect, defaultValues, isMulti, className, limit }) => {
+const LocationSelect: React.FC<LocationSelectProps> = ({
+	placeholder,
+	type,
+	onSelect,
+	defaultValues,
+	isMulti,
+	className,
+	limit,
+}) => {
 	const [selectedValues, setSelectedValues] = useState<LocationSelectElem[]>(defaultValues || []);
 
 	useEffect(() => {
@@ -28,7 +36,7 @@ const LocationSelect: React.FC = ({ placeholder, type, onSelect, defaultValues, 
 		}
 	}, [defaultValues]);
 
-	const loadOptions = async (inputValue: string): Promise => {
+	const loadOptions = async (inputValue: string): Promise<LocationSelectElem[]> => {
 		if (!inputValue || inputValue.length < 3) {
 			return [];
 		}
@@ -38,7 +46,10 @@ const LocationSelect: React.FC = ({ placeholder, type, onSelect, defaultValues, 
 		return result ? result.data.map(r => ({ value: r.id, label: r.fullName, data: result.data })) : [];
 	};
 
-	const onChange = (value: SingleValue | MultiValue, action: ActionMeta) => {
+	const onChange = (
+		value: SingleValue<LocationSelectElem> | MultiValue<LocationSelectElem>,
+		action: ActionMeta<LocationSelectElem>,
+	) => {
 		const updatedValues: LocationSelectElem[] = value ? (Array.isArray(value) ? value : [value]) : [];
 
 		if (isMulti && limit && updatedValues.length > limit) {
@@ -69,7 +80,7 @@ const LocationSelect: React.FC = ({ placeholder, type, onSelect, defaultValues, 
 export default LocationSelect;
 
 // Define the styles
-const darkModeStyles: StylesConfig = {
+const darkModeStyles: StylesConfig<LocationSelectElem> = {
 	control: styles => ({
 		...styles,
 		backgroundColor: 'black',

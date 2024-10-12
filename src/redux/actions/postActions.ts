@@ -140,7 +140,7 @@ const postActions = new (class PostActions {
 
 		this.logger.verbose(`nextMedia(): ${pix}/${nextMix}`);
 
-		const p = post as PostWithIndex;
+		const p = post as PostWithIndex<PostForUser>;
 		if (nextMix < 0 || nextMix >= p.medias.length) return;
 
 		this.setActive(pix, nextMix);

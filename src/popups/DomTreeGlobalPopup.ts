@@ -7,6 +7,6 @@ const mapStateToProps = (state: { popups: PopupsState }) => ({
 });
 
 const connector = connect(mapStateToProps);
-type PropsFromRedux = ConnectedProps;
+type PropsFromRedux = ConnectedProps<typeof connector>;
 
-export default connector(DomTreeGlobalPopupBase as React.ComponentType);
+export default connector(DomTreeGlobalPopupBase as React.ComponentType<DomTreeGlobalPopupBaseProps>);

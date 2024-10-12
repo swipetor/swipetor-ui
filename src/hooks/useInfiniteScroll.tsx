@@ -14,7 +14,7 @@ let touchEnd = 0;
 let isTouching = false;
 let wheelTurnedAt = 0;
 
-export default function useInfiniteScroll(postsCont: React.RefObject) {
+export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElement>) {
 	if ((window as any).userDeviceInfo.isBot) return;
 
 	const pix = useUIStore(s => s.post.pix);

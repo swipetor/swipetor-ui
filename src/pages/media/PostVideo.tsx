@@ -8,7 +8,7 @@ import SinglePlayer from 'src/libs/player/SinglePlayer';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	currentPost: PostWithIndex;
+	currentPost: PostWithIndex<PostForUser>;
 	currentMedia: PostMediaDto;
 }
 

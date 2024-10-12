@@ -74,7 +74,9 @@ const SubPlansList: React.FC = () => {
 				<div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
 					<Select
 						value={{ value: currency.value, label: currency.value }}
-						onChange={(option: SingleValue) => option && currency.onChange(option.value)}
+						onChange={(option: SingleValue<{ value: Currency; label: Currency }>) =>
+							option && currency.onChange(option.value)
+						}
 						options={currencyOptions}
 						placeholder="Currency"
 						isSearchable={false}

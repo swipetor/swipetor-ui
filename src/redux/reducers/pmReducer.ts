@@ -6,7 +6,7 @@ import StateActionType from '../actions/stateActionType';
 
 export interface PmState {
 	// All msg threads list
-	threadsById: Dictionary;
+	threadsById: Dictionary<PmThreadDto, number>;
 
 	// Current thread
 	activeThread?: PmThreadDto;
@@ -110,27 +110,27 @@ export default function (state = initialState, action: any): PmState {
 	}
 }
 
-export interface PmSetMsgListAction extends Action {
+export interface PmSetMsgListAction extends Action<StateActionType.PM_SET_MSGLIST> {
 	pmThread?: PmThreadDto;
 	pmMsgs?: PmMsgDto[];
 }
 
-export interface PmAppendMsgAction extends Action {
+export interface PmAppendMsgAction extends Action<StateActionType.PM_APPEND_MSG> {
 	pmMsg: PmMsgDto;
 }
 
-export interface PmThreadMarkReadAction extends Action {
+export interface PmThreadMarkReadAction extends Action<StateActionType.PM_THREAD_MARK_READ_LOCAL> {
 	threadId: number;
 	userId: number;
 	lastMsgId?: number;
 }
 
-export interface PmThreadListSetAction extends Action {
+export interface PmThreadListSetAction extends Action<StateActionType.PM_THREADS_SET> {
 	pmThreadList: PmThreadDto[];
 	staff: UserDto[];
 }
 
-export interface PmThreadListUpdateOneAction extends Action {
-	threadPartial: Partial;
+export interface PmThreadListUpdateOneAction extends Action<StateActionType.PM_THREADS_UPDATE_ONE> {
+	threadPartial: Partial<PmThreadDto>;
 	threadId: number;
 }

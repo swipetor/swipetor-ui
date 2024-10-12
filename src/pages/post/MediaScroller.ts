@@ -10,10 +10,10 @@ const logger = new Logger('MediaScroller', LogLevels.Info);
  * This class is used to detect which media is active in the post by checking the horizontal scroll position.
  */
 export default class MediaScroller {
-	private mediaItemsCnt: React.RefObject;
-	private post: PostWithIndex;
+	private mediaItemsCnt: React.RefObject<HTMLDivElement>;
+	private post: PostWithIndex<PostForUser>;
 
-	constructor(mediaItemsCnt: React.RefObject, post: PostWithIndex) {
+	constructor(mediaItemsCnt: React.RefObject<HTMLDivElement>, post: PostWithIndex<PostForUser>) {
 		this.mediaItemsCnt = mediaItemsCnt;
 		this.post = post;
 	}

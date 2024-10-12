@@ -16,7 +16,7 @@ import { useUIStore } from 'src/redux/reduxUtils';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	post: PostWithIndex;
+	post: PostWithIndex<PostForUser>;
 	media: PostMediaDto;
 }
 

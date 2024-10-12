@@ -13,7 +13,7 @@ import ExclusiveMediaDesc from 'src/pages/media/ExclusiveMediaDesc';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	post: PostWithIndex;
+	post: PostWithIndex<PostForUser>;
 	media: PostMediaDto;
 }
 

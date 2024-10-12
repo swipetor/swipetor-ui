@@ -52,7 +52,7 @@ class PlayerProvider {
 		const posts = store.getState().post.posts;
 		if (!posts) return null;
 
-		const post = posts[pix] as PostWithIndex;
+		const post = posts[pix] as PostWithIndex<PostForUser>;
 		const media = post.medias[mix];
 
 		if (!media) throw new Error(`getPlayerForIndex(): Media not found, ix: ${pix}/${mix}, medias: ${post.medias}`);

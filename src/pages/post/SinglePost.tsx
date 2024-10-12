@@ -12,7 +12,7 @@ import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { PostForUser } from 'src/types/DTOs';
 
 interface Props {
-	post?: PostWithIndex;
+	post?: PostWithIndex<PostForUser>;
 }
 
 export default function SinglePost({ post }: Props) {

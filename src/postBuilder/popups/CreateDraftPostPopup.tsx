@@ -7,7 +7,7 @@ import { PostDto } from 'src/types/DTOs';
 import httpClient from 'src/utils/httpClient';
 
 interface CreateDraftPostPopupProps {
-	onPostCreated?: (postId: number) => Promise;
+	onPostCreated?: (postId: number) => Promise<void>;
 }
 
 function CreateDraftPostPopup(props: CreateDraftPostPopupProps) {
@@ -20,7 +20,7 @@ function CreateDraftPostPopup(props: CreateDraftPostPopupProps) {
 		inputRef.current?.focus();
 	}, []);
 
-	const okayBtnClick = async (): Promise => {
+	const okayBtnClick = async (): Promise<void> => {
 		setOkayButtonDisabled(true);
 
 		try {

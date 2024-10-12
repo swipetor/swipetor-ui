@@ -22,7 +22,7 @@ export default function MyPhoto() {
 		myActions.getMy();
 	};
 
-	const uploadClick = async (e: React.MouseEvent) => {
+	const uploadClick = async (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
 		e.preventDefault();
 		const formdata = new FormData();
 		photoUploadContext.files.map(f => formdata.set('file', f));

@@ -12,12 +12,12 @@ import postActions from 'src/redux/actions/postActions';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
 interface Props {
-	post: PostWithIndex;
+	post: PostWithIndex<PostForUser>;
 }
 
 const logger = new Logger('PostMenuRow', LogLevels.Info);
 
-const PostMenuRow: React.FC = ({ post }) => {
+const PostMenuRow: React.FC<Props> = ({ post }) => {
 	const currentUser = useSelector((state: UIState) => state.my.user);
 	const isMuted = useSelector((state: UIState) => state.post.isMuted);
 

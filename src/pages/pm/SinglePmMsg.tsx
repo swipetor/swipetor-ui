@@ -10,7 +10,7 @@ interface Props {
 	currentUser: UserDto;
 }
 
-const SinglePmMsg: React.FC = ({ msg, thread, currentUser }) => {
+const SinglePmMsg: React.FC<Props> = ({ msg, thread, currentUser }) => {
 	const contentRef = useRef<HTMLDivElement>(null);
 
 	const isMyPost = () => {

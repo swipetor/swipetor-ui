@@ -15,7 +15,7 @@ export default function SingleGenericPost({ post }: Props) {
 	if (!post) return null;
 
 	if (post.type === 'PostForUser') {
-		return <SinglePost post={post as PostWithIndex} />;
+		return <SinglePost post={post as PostWithIndex<PostForUser>} />;
 	}
 
 	return null;

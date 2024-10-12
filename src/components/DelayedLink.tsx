@@ -5,7 +5,7 @@ import popupActions from 'src/redux/actions/popupActions';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { showLoginPopup } from 'src/utils/displayPopup';
 
-type DelayedLinkProps = Omit;
+type DelayedLinkProps = Omit<DelayedLinkBaseProps, 'isLoggedIn'>;
 const logger = new Logger(DelayedLink, LogLevels.Info);
 
 export default function DelayedLink(props: DelayedLinkProps) {

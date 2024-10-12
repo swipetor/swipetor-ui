@@ -8,9 +8,9 @@ const logger = new Logger('PostScroller', LogLevels.Info);
  * This class is used to detect which post is active by the scroll position.
  */
 export default class PostScroller {
-	private postsCnt: React.RefObject;
+	private postsCnt: React.RefObject<HTMLDivElement>;
 
-	constructor(bodyRef: React.RefObject) {
+	constructor(bodyRef: React.RefObject<HTMLDivElement>) {
 		this.postsCnt = bodyRef;
 	}
 

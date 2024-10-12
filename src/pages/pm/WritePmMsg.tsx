@@ -11,7 +11,7 @@ interface Props {
 	onFocus: () => void;
 }
 
-const WritePmMsg: React.FC = ({ threadId, onSent, onFocus }) => {
+const WritePmMsg: React.FC<Props> = ({ threadId, onSent, onFocus }) => {
 	const [txt, setTxt] = useState('');
 
 	const sendClick = async () => {

@@ -14,7 +14,7 @@ async function mentionsFetchFn(word: string, cb: (data: SuggestionDataItem[]) =>
 	}
 }
 
-type MentionsTextareaProps = Partial;
+type MentionsTextareaProps = Partial<MentionsInputProps>;
 
 export function Mentions(props: MentionsTextareaProps) {
 	return <MentionsTextareaBase {...props} mentionsFetchFn={mentionsFetchFn} />;

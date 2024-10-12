@@ -34,18 +34,18 @@ const handleFileUpload = async (postId: number, file: File) => {
 	popupActions.snackbarMsg('Video is added', SimpleSnackbarVariant.success);
 };
 
-const AddVideoPopup: React.FC = ({ postId, refresh }) => {
+const AddVideoPopup: React.FC<Props> = ({ postId, refresh }) => {
 	const [file, setFile] = useState<File | undefined>(undefined);
 	const [okayButtonDisabled, setOkayButtonDisabled] = useState<boolean>(false);
 	const [mediaUrl, setMediaUrl] = useState('');
 
-	const onFileChange = (event: React.ChangeEvent) => {
+	const onFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files) {
 			setFile(event.target.files[0]);
 		}
 	};
 
-	const okayBtnClick = async (): Promise => {
+	const okayBtnClick = async (): Promise<void> => {
 		try {
 			setOkayButtonDisabled(true);
 			if (file) {

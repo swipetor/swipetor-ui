@@ -9,7 +9,7 @@ import { Logger, LogLevels } from '@atas/weblib-ui-js';
 
 let onloadCallbacks: ((my: MyState) => void)[] | null = [];
 
-let autoPingToken: ReturnType | null = null;
+let autoPingToken: ReturnType<typeof setInterval> | null = null;
 let autoPingRunAt = 0; // Wrapper ping. It further checks weather to call APIs to refresh data now or later.
 
 export default new (class MyActions {

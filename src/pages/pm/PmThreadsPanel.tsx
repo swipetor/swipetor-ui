@@ -14,11 +14,11 @@ import pmUtils from './pmUtils';
 
 interface Props {
 	//extends RouteComponentProps<{ threadId?: string; init?: string }> {
-	threadsById?: Dictionary;
+	threadsById?: Dictionary<PmThreadDto, number>;
 	currentUser?: UserDto;
 }
 
-const PmThreadsPanel: React.FC = () => {
+const PmThreadsPanel: React.FC<Props> = () => {
 	const threadsById = useSelector((state: UIState) => state.pm.threadsById);
 	const currentUser = useSelector((state: UIState) => state.my.user);
 	const { init, ...params } = useParams<{ threadId: string; init: string }>();

@@ -9,7 +9,7 @@ interface PropsFromState {
 	isOpen: boolean;
 }
 
-type RequiredProps = Subtract;
+type RequiredProps = Subtract<PopupWrapperProps, PropsFromState>;
 
 export default function PopupWrapper(props: RequiredProps) {
 	const isOpen = useUIStore(s => s.popups.globalPopup.isOpen);

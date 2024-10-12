@@ -12,7 +12,7 @@ interface Props {
 
 const logger = new Logger('VideoProgressBar', LogLevels.Info);
 
-const VideoProgressBar: React.FC = (props: Props) => {
+const VideoProgressBar: React.FC<Props> = (props: Props) => {
 	const progressBarRef = React.useRef<HTMLDivElement>(null);
 	const [currentPercent, setCurrentPercent] = useState<number>(0);
 	const currentPercentRef = React.useRef<number>(0);

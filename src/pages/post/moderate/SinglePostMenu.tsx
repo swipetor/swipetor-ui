@@ -16,7 +16,7 @@ interface Props {
 	closeFn: (isInstant?: boolean) => void;
 }
 
-const SinglePostMenu: React.FC = ({ post, closeFn }) => {
+const SinglePostMenu: React.FC<Props> = ({ post, closeFn }) => {
 	const user = useSelector((state: UIState) => state.my.user);
 
 	const logger = new Logger(SinglePostMenu, LogLevels.Info);
