@@ -83,7 +83,7 @@ jobs:
               run: |
                   mkdir -p ~/.ssh/
                   ls -lha ~/.ssh
-                  echo "${{ secrets.SSH_PRIV_ARES_UF }}" > ~/.ssh/id_ed25519
+                  echo "${{ secrets.SSH_PRIV_ARES }}" > ~/.ssh/id_ed25519
                   chmod 600 ~/.ssh/id_ed25519
                   ssh-keyscan -p 1989 ares.swipetor.com >> ~/.ssh/known_hosts
 
