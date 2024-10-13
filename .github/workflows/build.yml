@@ -80,6 +80,7 @@ jobs:
     deploy:
       needs: build
       runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main'
       environment: main
       steps:
         - name: Set up SSH
