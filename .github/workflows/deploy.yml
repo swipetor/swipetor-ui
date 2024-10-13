@@ -10,7 +10,7 @@ on:
       - completed  # Trigger when the build workflow completes
 
 jobs:
-  build_and_publish:
+  deploy:
     runs-on: ubuntu-latest
     environment: main
     if: ${{ github.event.workflow_run.conclusion == 'success' }}

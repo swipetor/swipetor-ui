@@ -9,7 +9,7 @@ permissions:
     contents: write
 
 jobs:
-    build_and_publish:
+    build:
         runs-on: ubuntu-latest
 
         steps:
