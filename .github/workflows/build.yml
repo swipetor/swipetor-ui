@@ -77,4 +77,19 @@ jobs:
                       --notes "${COMMIT_MSG}"
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    deploy:
+      needs: build
+      runs-on: ubuntu-latest
+      environment: main
+      steps:
+        - name: Set up SSH
+          run: |
+            mkdir -p ~/.ssh/
+            ls -lha ~/.ssh
+            echo "${{ secrets.SSH_PRIV_ARES }}" > ~/.ssh/id_ed25519
+            chmod 600 ~/.ssh/id_ed25519
+            ssh-keyscan -p 1989 ares.swipetor.com >> ~/.ssh/known_hosts
 
+        - name: Trigger pull-deploy
+          run: |
+            ssh -p1989 ata@ares.swipetor.com "/opt/swipetor/bin/pull-deploy/run.sh"
