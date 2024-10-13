@@ -86,10 +86,10 @@ jobs:
           run: |
             mkdir -p ~/.ssh/
             ls -lha ~/.ssh
-            echo "${{ secrets.SSH_PRIV_ARES }}" > ~/.ssh/id_ed25519
+            echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
             chmod 600 ~/.ssh/id_ed25519
-            ssh-keyscan -p 1989 ares.swipetor.com >> ~/.ssh/known_hosts
+            ssh-keyscan -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
 
         - name: Trigger pull-deploy
           run: |
-            ssh -p1989 ata@ares.swipetor.com "/opt/swipetor/bin/pull-deploy/run.sh"
+            ssh -p${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/opt/swipetor/bin/pull-deploy/run.sh"
