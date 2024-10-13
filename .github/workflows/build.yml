@@ -93,3 +93,4 @@ jobs:
         - name: Trigger pull-deploy
           run: |
             ssh -p${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/opt/swipetor/bin/pull-deploy/run.sh"
+
