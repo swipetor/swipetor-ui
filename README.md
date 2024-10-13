@@ -13,7 +13,7 @@ https://demo.swipetor.com
 - [swipetor-server](https://github.com/atas/swipetor-server)
 - [weblib-ui-js](https://github.com/atas/weblib-ui-js)
 - [weblib-server-cs](https://github.com/atas/weblib-server-cs)
-- [www & docs](https://github.com/atas/swipetor-www)
+- [www](https://github.com/atas/swipetor-www)
 
 ## Project Goals
 
