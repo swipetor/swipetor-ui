@@ -33,7 +33,7 @@ jobs:
 
             - name: Install dependencies
               run: |
-#                  echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
+                  # echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
                   npm ci
               env:
 #                  NPM_TOKEN: ${{ secrets.READ_PKGS_KEY }}
