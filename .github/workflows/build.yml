@@ -32,12 +32,8 @@ jobs:
                       ${{ runner.os }}-npm-
 
             - name: Install dependencies
-              # echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
               run: |
-                  
                   npm ci
-              env:
-#                  NPM_TOKEN: ${{ secrets.READ_PKGS_KEY }}
 
             - name: Set next version
               run: |
