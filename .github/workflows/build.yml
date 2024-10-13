@@ -33,10 +33,7 @@ jobs:
 
             - name: Install dependencies
               run: |
-                  echo "//npm.pkg.github.com/:_authToken=${NPM_TOKEN}" >> .npmrc
                   npm ci
-              env:
-                  NPM_TOKEN: ${{ secrets.READ_PKGS_KEY }}
 
             - name: Set next version
               run: |
@@ -77,9 +74,11 @@ jobs:
                       --notes "${COMMIT_MSG}"
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     deploy:
       needs: build
       runs-on: ubuntu-latest
+      if: github.ref == 'refs/heads/main'
       environment: main
       steps:
         - name: Set up SSH
@@ -93,3 +92,4 @@ jobs:
         - name: Trigger pull-deploy
           run: |
             ssh -p${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "/opt/swipetor/bin/pull-deploy/run.sh"
+
