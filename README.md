@@ -37,7 +37,7 @@ https://demo.swipetor.com
 ## Installation & Setup
 
 The software is provided as is, no guarantees.  
-Follow the [installation guide](docs/installation.md) to setup your own instance on your laptop or server.
+Follow the [installation guide](docs/setup) to setup your own instance on your laptop or server.
 
 ## Cloud Hosting
 

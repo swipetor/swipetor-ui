@@ -10,7 +10,7 @@
 		"check-circular": "npx madge --circular --extensions ts ./src"
 	},
 	"dependencies": {
-		"@atas/weblib-ui-js": "^1.0.1",
+		"@atas/weblib-ui-js": "^1.0.3",
 		"@reduxjs/toolkit": "^2.2.5",
 		"@types/autosize": "^4.0.3",
 		"@types/dompurify": "^3.0.5",
