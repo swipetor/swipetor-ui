@@ -59,7 +59,7 @@ jobs:
                   # Create a new release and upload the tar.gz as an asset
                   gh release create v${{ env.next_version }} \
                     swpui-v${{ env.next_version }}.tar.gz \
-                      --title "Release v${{ env.next_version }}" \
+                      --title "v${{ env.next_version }}" \
                       --notes "${COMMIT_MSG}"
               env:
                   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
