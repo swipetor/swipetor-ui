@@ -34,8 +34,7 @@ jobs:
                   echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" > ~/.npmrc
                   npm ci
 
-            - id: bump-release-calver
-              uses: atas/bump-release-calver-action@main
+            - uses: atas/actions/bump-release-calver@main
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
 
