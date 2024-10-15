@@ -56,4 +56,4 @@ web.
   - This license allows commercial use, but you should share any modifications you make to the software. Please send a
     PR back for any improvements.
   - This license restricts multi-tenant or multi-domain usage.
-- **Dual Licensing**: Please contact at www.swipetor.com.
+- **Different/Dual Licensing**: Please contact at www.swipetor.com.
