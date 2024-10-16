@@ -37,10 +37,6 @@ https://demo.swipetor.com
 The software is provided as is, no guarantees.  
 Follow the [installation guide](docs/setup.md) to setup your own instance on your laptop or server.
 
-## Cloud Hosting
-
-There might be a possibility of cloud hosting without any installation. www.swipetor.com
-
 ## Contributing
 
 Please contribute back to the projects to provide a reliable high quality video sharing platform that works on the
