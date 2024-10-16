@@ -10,17 +10,15 @@ https://demo.swipetor.com
 
 ## Related Projects
 
-- [swipetor-server](https://github.com/atas/swipetor-server)
+- [swipetor-server](https://github.com/swipetor/swipetor-server)
 - [weblib-ui-js](https://github.com/atas/weblib-ui-js)
 - [weblib-server-cs](https://github.com/atas/weblib-server-cs)
-- [www](https://github.com/atas/swipetor-www)
+- [www](https://github.com/swipetor/swipetor-www)
 
 ## Project Goals
 
 - Allow serving digital content on a web app, as good as the social media apps.
-- Provide a solution for creators on their own branded web address to distinguish themselves from influx of AI generated
-  videos in the social media.
-- Allow monetising premium and full-videos (future).
+- Provide a free and open-source video swipe feed solution running on web to distinguish independent digital content from the influx of mediocre and AI-generated content on social media and from social broadcasting.
 
 ## Features
 
