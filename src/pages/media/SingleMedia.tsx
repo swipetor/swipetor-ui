@@ -31,8 +31,7 @@ export default function SingleMedia(props: Props) {
 		: [m.video?.width, m.video?.height];
 
 	const aspectRatio = (width || 16) / (height || 9);
-	const isVerticalVideo = aspectRatio > 0.4 && aspectRatio < 0.7;
-	const stretch = isVerticalVideo;
+	const stretch = aspectRatio > 0.4 && aspectRatio < 0.7;
 
 	const isExclusive = isMediaExclusive(props.post, m);
 

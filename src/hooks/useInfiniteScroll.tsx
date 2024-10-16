@@ -111,6 +111,9 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 				'exclusiveDescWrapper',
 				'exclusiveInfo',
 				'exclusiveContentDiv',
+				'swipeUpTutorialText',
+				'mediaDescription',
+				'mediaDescText',
 			];
 			if (allowedClasses.some(c => elem.classList.contains(c))) return true;
 		}

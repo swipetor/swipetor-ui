@@ -145,7 +145,7 @@ export default function (state = initialState, action: Action): PostState {
 				const p = post as PostWithIndex<PostForUser>;
 
 				if (p.user && p.userId === a.userId) {
-					return { ...p, data: { ...p, user: { ...p.user, userFollows: a.userFollows } } };
+					return { ...p, user: { ...p.user, userFollows: a.userFollows }};
 				}
 			}
 			return post;

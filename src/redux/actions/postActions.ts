@@ -168,6 +168,7 @@ const postActions = new (class PostActions {
 	}
 
 	userFollows(userId: number, userFollows: boolean) {
+		this.logger.info(`userFollows(): userId=${userId}, userFollows=${userFollows}`);
 		store.dispatch<PostUserFollowsAction>({
 			userId,
 			userFollows,

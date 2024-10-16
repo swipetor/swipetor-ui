@@ -49,7 +49,7 @@ const MediaDescription: React.FC<Props> = ({ post, media }) => {
 
 	return (
 		<div className={`mediaDescription ${collapsed ? 'collapsed' : ''}`}>
-			<div ref={textDivRef} className="text">
+			<div ref={textDivRef} className="mediaDescText">
 				{collapsed && !window.userDeviceInfo?.isBot && textDesc}
 				{(window.userDeviceInfo?.isBot || !collapsed) && (
 					<>
