@@ -50,7 +50,7 @@ jobs:
               run: |
                   rm -f ./public/build/*.LICENSE.txt
                   echo ${{ env.next_version }} > public/build/version.txt
-                  tar -czvf swpui-v${{ env.next_version }}.tar.gz ./public/build
+                  tar -czvf swpui-${{ env.next_version }}.tar.gz ./public/build
 
             - name: Create and Publish Release
               if: github.ref == 'refs/heads/main'
@@ -58,7 +58,7 @@ jobs:
                   COMMIT_MSG=$(git log -1 --pretty=%B)
                   # Create a new release and upload the tar.gz as an asset
                   gh release create v${{ env.next_version }} \
-                    swpui-v${{ env.next_version }}.tar.gz \
+                    swpui-${{ env.next_version }}.tar.gz \
                       --title "v${{ env.next_version }}" \
                       --notes "${COMMIT_MSG}"
               env:
