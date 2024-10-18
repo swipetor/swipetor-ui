@@ -4,6 +4,7 @@ import postActions from 'src/redux/actions/postActions';
 import { detectBrowser, Logger, LogLevels } from '@atas/weblib-ui-js';
 import wheelUtils from 'src/utils/wheelUtils';
 import pubsub from 'src/libs/pubsub/pubsub';
+import playerProvider from 'src/libs/player/playerProvider';
 
 const logger = new Logger('useInfiniteScroll', LogLevels.Verbose);
 logger.infoStyle = 'background: #492E87; color: #FFF';
@@ -117,6 +118,8 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 		e.stopPropagation();
 		e.stopImmediatePropagation();
 		if (!isEventTargetAllowed(e.target)) return;
+
+		playerProvider.touchIfNotTouched();
 
 		e.stopPropagation();
 

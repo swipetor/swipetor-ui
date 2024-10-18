@@ -43,6 +43,14 @@ class PlayerProvider {
 		return player.play();
 	}
 
+	touchIfNotTouched() {
+		if (!this._hasTouched) {
+			this.logger.info('touchIfNotTouched(): touching ALL players');
+			this._hasTouched = true;
+			this._players.forEach(async p => p.touch());
+		}
+	}
+
 	/**
 	 * Gets the right player for a given postIndex and mediaIndex
 	 * @param pix
