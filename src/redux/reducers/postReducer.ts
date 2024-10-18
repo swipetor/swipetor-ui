@@ -30,7 +30,7 @@ const initialState: PostState = {
 	swiped: localStorage.getItem('swiped') === '1',
 };
 
-const logger = new Logger('postReducer', LogLevels.Verbose);
+const logger = new Logger('postReducer', LogLevels.Info);
 
 export default function (state = initialState, action: Action): PostState {
 	if (action.type === StateActionType.POST_ADD) {

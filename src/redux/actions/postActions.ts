@@ -58,18 +58,20 @@ const postActions = new (class PostActions {
 
 		const r = await httpClient.get<PostsGetApiResp>(`/api/posts?${qs.stringify(params)}`);
 
-		store.dispatch<PostAddAction>({
-			posts: r.data.posts.map(p => ({ ...p, type: 'PostForUser' })),
-			type: StateActionType.POST_ADD,
-		});
+		const posts = r.data.posts.map(p => ({ ...p, type: 'PostForUser' }));
 
-		const posts = store.getState().post.posts;
-		if (!posts || r.data.posts.length - posts.length <= 0) {
-			this.addGenericPost({
+		if ((store.getState().post?.posts || []).length <= 1) {
+			// Add the generic post as the 3rd element
+			posts.splice(2, 0, {
 				type: 'StaticPostType',
 				component: 'WhySwipetorPost',
 			} as StaticPostType);
 		}
+
+		store.dispatch<PostAddAction>({
+			posts,
+			type: StateActionType.POST_ADD,
+		});
 	}
 
 	async updateById(postId: number) {

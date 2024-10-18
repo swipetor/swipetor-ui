@@ -1,4 +1,5 @@
 import { NotifDto, PostForUser, PublicUserDto } from './DTOs';
+import { AnyPost } from 'src/redux/reducers/postReducer';
 
 export type NotifResult = {
 	lastNotifCheckAt: number;
@@ -6,7 +7,7 @@ export type NotifResult = {
 };
 
 export interface PostsGetApiResp {
-	posts: PostForUser[];
+	posts: AnyPost[];
 }
 
 export interface GetUsersApiResp {
