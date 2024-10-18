@@ -7,9 +7,7 @@ import NoPostsMsg from 'src/post/NoPostsMsg';
 import KeyboardAndSwipeHints from 'src/post/KeyboardAndSwipeHints';
 import useInfiniteScroll from 'src/hooks/useInfiniteScroll';
 import postActions from 'src/redux/actions/postActions';
-import BotsLanding from 'src/pages/home/BotsLanding';
 import { useLocation } from 'react-router-dom';
-import userDeviceInfo from 'src/utils/userDeviceInfo';
 import { useEffectAsync } from 'src/utils/reactUtils';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { StaticPostType } from 'src/post/genericPosts/StaticPost';
@@ -69,10 +67,6 @@ export default function PostsPanel(props: Props) {
 		pix >= 1 && postActions.swiped(true);
 	}, [pix]);
 	// endregion
-
-	if (userDeviceInfo.isBot && location.pathname === '/') {
-		return <BotsLanding />;
-	}
 
 	// Determine the index for each post
 	const postIndices: (PostWithIndex | undefined)[] = new Array(postsToRender).fill(undefined);

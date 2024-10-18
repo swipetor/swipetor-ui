@@ -59,7 +59,7 @@ export default function SinglePost({ post }: Props) {
 		if (post && post.index === 1 && activePix === 0) {
 			singlePostRef.current?.style.setProperty('transform', 'translate3d(0px, 100%, 0px)');
 		}
-	}, []);
+	}, [post]);
 
 	/**
 	 * @param next 1 for next active post, -1 for previous

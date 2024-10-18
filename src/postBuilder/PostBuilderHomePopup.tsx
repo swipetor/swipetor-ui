@@ -16,18 +16,6 @@ export default function PostBuilderHomePopup() {
 	return (
 		<div className="postBuilderHomePopup">
 			<DelayedButton
-				className="mainBtn block"
-				onDelayedClick={() => {
-					popupActions.fullScreenPopup({ isOpen: false });
-					navigate('/camera');
-				}}>
-				<span className="material-icons">add_a_photo</span>
-				&nbsp; Snap Instant Post
-			</DelayedButton>
-
-			<br />
-
-			<DelayedButton
 				className="main block"
 				loggedInOnly
 				onDelayedClick={() => {

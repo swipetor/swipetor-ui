@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import ExclusiveLayer from 'src/pages/media/ExclusiveLayer';
 import MediaDescription from 'src/post/MediaDescription';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { PostMediaType } from 'src/types/enums';
-import { isMediaExclusive } from 'src/utils/postUtils';
 import PostVideo from './PostVideo';
 import photoUtils from 'src/utils/photoUtils';
 import playerProvider from 'src/libs/player/playerProvider';
@@ -33,15 +31,13 @@ export default function SingleMedia(props: Props) {
 	const aspectRatio = (width || 16) / (height || 9);
 	const stretch = aspectRatio > 0.4 && aspectRatio < 0.7;
 
-	const isExclusive = isMediaExclusive(props.post, m);
-
 	const cls = ['singleMedia'];
 	cls.push(m.type === PostMediaType.Photo ? 'img' : 'video');
 	isActive() && cls.push('active');
 	stretch && cls.push('stretch');
 
 	useEffect(() => {
-		if (isActive() && isExclusive) {
+		if (isActive()) {
 			playerProvider.pauseAll();
 		}
 	}, [activePix, activeMix]);
@@ -54,10 +50,9 @@ export default function SingleMedia(props: Props) {
 			style={{
 				backgroundImage: `url(${photoUtils.getSrcByPhoto(m.previewPhoto)})`,
 			}}>
-			{!isExclusive && <PostVideo currentPost={props.post} currentMedia={m} />}
+			<PostVideo currentPost={props.post} currentMedia={m} />
 
-			{!isExclusive && <MediaDescription post={props.post} media={m} />}
-			<ExclusiveLayer post={props.post} media={m} />
+			<MediaDescription post={props.post} media={m} />
 		</div>
 	);
 }

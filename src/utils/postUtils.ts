@@ -1,6 +1,6 @@
 import { convertToSlug, copyToClipboard, detectBrowser, Logger, LogLevels } from '@atas/weblib-ui-js';
 import popupActions from 'src/redux/actions/popupActions';
-import { PostDto, PostForUser, PostMediaDto, UserDto } from 'src/types/DTOs';
+import { PostDto, PostForUser, UserDto } from 'src/types/DTOs';
 import querystring from 'query-string';
 import uiConfig from 'src/init/uiConfig';
 
@@ -29,10 +29,6 @@ export async function sharePostOrCopyLink(post: PostDto, currentUserId?: number)
 export function copyPostLink(post: PostDto, currentUserId?: number, msg?: string | null) {
 	copyToClipboard(getPostUrl(post, { rfid: currentUserId, includeDomain: true }));
 	msg !== null && popupActions.snackbarMsg(msg || `Post url is copied.`);
-}
-
-export function isMediaExclusive(post?: PostDto | null, media?: PostMediaDto) {
-	return !!media?.isFollowersOnly || media?.subPlanId;
 }
 
 export function getPostUrl(

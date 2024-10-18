@@ -29,18 +29,10 @@ export default function PostSummary(props: Props) {
 function getMedia(i: number, m: PostMediaDto, p: PostDto) {
 	return (
 		<div key={m.id} className="media">
-			<div className={`mediaPhotoDiv ${m.isFollowersOnly ? 'exclusiveMedia' : ''}`}>
+			<div className={`mediaPhotoDiv`}>
 				<UploadedPhoto photo={m.previewPhoto} className="mediaPhoto" />
-				<div className="exclusiveText">
-					<span className="material-icons">star</span>
-					<p>Exclusive</p>
-				</div>
 				<div className="mediaTime">
 					{m.video?.duration && <span>{secondsToPrettyDuration(m.video.duration)}</span>}
-				</div>
-				<div className="currentMedia">
-					<span className="material-icons">swipe</span>&nbsp;&nbsp;
-					{i + 1} / {p.medias.length}
 				</div>
 			</div>
 			<p className="title">{m.description || p.title}</p>

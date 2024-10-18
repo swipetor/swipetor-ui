@@ -122,10 +122,9 @@ export default function SideMenu() {
 
 			{(!detectBrowser.isiOS() || (window.navigator as any).standalone) && (
 				<DelayedButton
-					onDelayedClick={async () => {
-						closeMenu();
-						pushNotifsToThisDeviceClick();
-					}}
+					onDelayedClick={async () => pushNotifsToThisDeviceClick()}
+					loggedInOnly
+					onClick={() => closeMenu()}
 					className="secondaryLink">
 					<span className="material-icons">notifications_active</span> Enable Push Notifications
 				</DelayedButton>
