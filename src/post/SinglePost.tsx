@@ -54,6 +54,13 @@ export default function SinglePost({ post }: Props) {
 		}
 	}, [post, activePix]);
 
+	useEffect(() => {
+		// Reset .next post's transform when page loads first time
+		if (post && post.index === 1 && activePix === 0) {
+			singlePostRef.current?.style.setProperty('transform', 'translate3d(0px, 100%, 0px)');
+		}
+	}, []);
+
 	/**
 	 * @param next 1 for next active post, -1 for previous
 	 */
