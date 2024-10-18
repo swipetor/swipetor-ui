@@ -47,8 +47,9 @@ module.exports = {
 		sourceType: 'module',
 		project: './tsconfig.json',
 	},
-	plugins: ['react', '@typescript-eslint', 'promise'],
+	plugins: ['react', '@typescript-eslint', 'promise', 'unused-imports'],
 	rules: {
+		'unused-imports/no-unused-imports': 'error',
 		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'no-tabs': 0,
 		semi: 'off',

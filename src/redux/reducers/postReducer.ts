@@ -1,8 +1,10 @@
 import { Action } from 'redux';
 import { PostForUser } from 'src/types/DTOs';
 import StateActionType from '../actions/stateActionType';
+import { StaticPostType } from 'src/post/genericPosts/StaticPost';
+import { Logger, LogLevels } from '@atas/weblib-ui-js';
 
-export type AnyPost = PostForUser;
+export type AnyPost = PostForUser | StaticPostType;
 
 export type PostWithIndex<T extends AnyPost = AnyPost> = {
 	index: number;
@@ -16,7 +18,7 @@ export interface PostState {
 	isMuted: boolean;
 	isPlaying: boolean;
 	isFullScreen: boolean;
-	touchingArea: false | 'left' | 'right' | 'middle';
+	swiped: boolean;
 }
 
 const initialState: PostState = {
@@ -25,12 +27,17 @@ const initialState: PostState = {
 	isMuted: localStorage.getItem('isMuted') === 'true',
 	isPlaying: false,
 	isFullScreen: false,
-	touchingArea: false,
+	swiped: localStorage.getItem('swiped') === '1',
 };
+
+const logger = new Logger('postReducer', LogLevels.Verbose);
 
 export default function (state = initialState, action: Action): PostState {
 	if (action.type === StateActionType.POST_ADD) {
 		const a = action as PostAddAction;
+
+		logger.verbose('Adding posts', a.posts);
+
 		let indexCounter = state.indexCounter;
 
 		const posts = [...(state.posts || [])];
@@ -102,10 +109,12 @@ export default function (state = initialState, action: Action): PostState {
 		const a = action as PostFavAction;
 
 		const posts = state.posts?.map(post => {
-			if (post.id === a.postId) {
-				return { ...post, userFav: a.isFav };
+			if (post.type !== 'PostForUser') return post;
+			const p = post as PostWithIndex<PostForUser>;
+			if (p.id === a.postId) {
+				return { ...p, userFav: a.isFav };
 			}
-			return post;
+			return p;
 		});
 
 		return {
@@ -145,7 +154,7 @@ export default function (state = initialState, action: Action): PostState {
 				const p = post as PostWithIndex<PostForUser>;
 
 				if (p.user && p.userId === a.userId) {
-					return { ...p, user: { ...p.user, userFollows: a.userFollows }};
+					return { ...p, user: { ...p.user, userFollows: a.userFollows } };
 				}
 			}
 			return post;
@@ -157,12 +166,9 @@ export default function (state = initialState, action: Action): PostState {
 		};
 	}
 
-	if (action.type === StateActionType.POST_TOUCHING_AREA) {
-		const a = action as PostTouchingAreaAction;
-		return {
-			...state,
-			touchingArea: a.touchingArea,
-		};
+	if (action.type === StateActionType.POST_SWIPED) {
+		const a = action as PostSwipedAction;
+		return { ...state, swiped: a.swiped };
 	}
 
 	return state;
@@ -204,6 +210,6 @@ export interface PostUserFollowsAction extends Action<StateActionType.POST_USER_
 	userFollows: boolean;
 }
 
-export interface PostTouchingAreaAction extends Action<StateActionType.POST_TOUCHING_AREA> {
-	touchingArea: false | 'left' | 'right' | 'middle';
+export interface PostSwipedAction extends Action<StateActionType.POST_SWIPED> {
+	swiped: boolean;
 }

@@ -1,18 +1,20 @@
 import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect, useMemo } from 'react';
 import { UIState } from 'src/redux/reducers/reducers';
-import SingleMedia from '../media/SingleMedia';
-import MediaProgressIndicators from '../media/MediaProgressIndicators';
+import SingleMedia from '../pages/media/SingleMedia';
+import MediaProgressIndicators from '../pages/media/MediaProgressIndicators';
 import PostMenuRow from './PostMenuRow';
 import SinglePostTopRow from './SinglePostTopRow';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getPostUrl } from 'src/utils/postUtils';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
+import StaticPost, { StaticPostType } from 'src/post/genericPosts/StaticPost';
 import { PostForUser } from 'src/types/DTOs';
+import SwipeUpTutorialText from 'src/post/SwipeUpTutorialText';
 
 interface Props {
-	post?: PostWithIndex<PostForUser>;
+	post?: PostWithIndex;
 }
 
 export default function SinglePost({ post }: Props) {
@@ -20,7 +22,16 @@ export default function SinglePost({ post }: Props) {
 	const navigate = useNavigate();
 	const singlePostRef = React.useRef<HTMLDivElement>(null);
 	const location = useLocation();
-	const touchingArea = useUIStore((s: UIState) => s.post.touchingArea);
+	const swiped = useUIStore((s: UIState) => s.post.swiped);
+
+	const logger = useMemo(
+		() =>
+			new Logger('SinglePost', LogLevels.Info, '', () => ({
+				activePostIndex: activePix,
+				isActivePost: isActivePost(),
+			})),
+		[activePix],
+	);
 
 	// Reset transform when is inactive
 	useEffect(() => {
@@ -35,20 +46,13 @@ export default function SinglePost({ post }: Props) {
 	useEffect(() => {
 		if (!post || !isActivePost()) return;
 
-		const postsUrl = getPostUrl(post);
-		if (location.pathname !== postsUrl) {
-			navigate(postsUrl, { replace: true });
+		if (post.type === 'PostForUser') {
+			const postsUrl = getPostUrl(post as PostWithIndex<PostForUser>);
+			if (location.pathname !== postsUrl) {
+				navigate(postsUrl, { replace: true });
+			}
 		}
 	}, [post, activePix]);
-
-	const logger = useMemo(
-		() =>
-			new Logger('SinglePost', LogLevels.Info, '', () => ({
-				activePostIndex: activePix,
-				isActivePost: isActivePost(),
-			})),
-		[activePix],
-	);
 
 	/**
 	 * @param next 1 for next active post, -1 for previous
@@ -59,10 +63,8 @@ export default function SinglePost({ post }: Props) {
 		const cls = ['singlePost'];
 		if (isActivePost()) {
 			cls.push('active');
-			touchingArea && cls.push('touchingArea-' + touchingArea);
 		} else if (isActivePost(1)) cls.push('next');
 		else if (isActivePost(-1)) cls.push('prev');
-		post && post.medias.length > 1 && cls.push('multiMedia');
 		return cls.join(' ');
 	};
 
@@ -70,19 +72,35 @@ export default function SinglePost({ post }: Props) {
 
 	if (window.userDeviceInfo?.isBot && !isActivePost()) return null;
 
+	const getPostForUser = () => {
+		const p = post as PostWithIndex<PostForUser>;
+
+		return (
+			<>
+				<MediaProgressIndicators post={p} />
+				<SinglePostTopRow post={p} />
+				{/*<PostsPanelTopRight />*/}
+
+				{p.medias.map((_, i) => (
+					<SingleMedia key={i} post={p} mix={i} />
+				))}
+
+				<PostMenuRow post={p} />
+
+				{!swiped && <SwipeUpTutorialText absolute={true} />}
+			</>
+		);
+	};
+
+	const getStaticPost = () => {
+		const p = post as PostWithIndex<StaticPostType>;
+		return <StaticPost post={p} />;
+	};
+
 	return (
 		<div ref={singlePostRef} data-post-index={post.index} className={singlePostCls()}>
-			<MediaProgressIndicators post={post} />
-
-			<SinglePostTopRow post={post} />
-
-			{/*<PostsPanelTopRight />*/}
-
-			{post.medias.map((_, i) => (
-				<SingleMedia key={i} post={post} mix={i} />
-			))}
-
-			<PostMenuRow post={post} />
+			{post.type === 'PostForUser' && getPostForUser()}
+			{post.type === 'StaticPostType' && getStaticPost()}
 		</div>
 	);
 }

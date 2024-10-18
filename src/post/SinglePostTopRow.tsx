@@ -1,7 +1,7 @@
 import React from 'react';
 import DelayedLink from 'src/components/DelayedLink';
 import UploadedPhoto from 'src/components/UploadedPhoto';
-import FollowButton from 'src/pages/post/FollowButton';
+import FollowButton from 'src/post/FollowButton';
 import UserMsgButton from 'src/pages/user/UserMsgButton';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { PostForUser } from 'src/types/DTOs';

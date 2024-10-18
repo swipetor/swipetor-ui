@@ -1,10 +1,10 @@
 import { Logger, LogLevels } from '@atas/weblib-ui-js';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useUIStore } from 'src/redux/reduxUtils';
-import { usePostsPanelKeyboardShortcuts, useUrlParams } from 'src/pages/post/PostsPanelHooks';
-import PostsPanelLoading from 'src/pages/post/PostsPanelLoading';
-import NoPostsMsg from 'src/pages/post/NoPostsMsg';
-import KeyboardAndSwipeHints from 'src/pages/post/KeyboardAndSwipeHints';
+import { usePostsPanelKeyboardShortcuts, useUrlParams } from 'src/post/PostsPanelHooks';
+import PostsPanelLoading from 'src/post/PostsPanelLoading';
+import NoPostsMsg from 'src/post/NoPostsMsg';
+import KeyboardAndSwipeHints from 'src/post/KeyboardAndSwipeHints';
 import useInfiniteScroll from 'src/hooks/useInfiniteScroll';
 import postActions from 'src/redux/actions/postActions';
 import BotsLanding from 'src/pages/home/BotsLanding';
@@ -12,8 +12,8 @@ import { useLocation } from 'react-router-dom';
 import userDeviceInfo from 'src/utils/userDeviceInfo';
 import { useEffectAsync } from 'src/utils/reactUtils';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
-import SingleGenericPost from 'src/pages/post/genericPosts/SingleGenericPost';
-import SwipeUpTutorialText from 'src/pages/post/SwipeUpTutorialText';
+import { StaticPostType } from 'src/post/genericPosts/StaticPost';
+import SinglePost from 'src/post/SinglePost';
 
 const logger = new Logger('PostsPanel', LogLevels.Info);
 
@@ -28,13 +28,11 @@ export default function PostsPanel(props: Props) {
 	const location = useLocation();
 	usePostsPanelKeyboardShortcuts(); // registers keyboard shortcuts
 	const urlParams = useUrlParams(props.postId);
-	const { postId } = urlParams;
 
 	// region From store
 	const allPosts = useUIStore(s => s.post.posts);
 	const pix = useUIStore(s => s.post.pix);
-
-	const [swiped, setSwiped] = useState(localStorage.getItem('swiped'));
+	const swiped = useUIStore(s => s.post.swiped);
 
 	const contextPosts = useUIStore(s => {
 		const starti = Math.max(s.post.pix - 1, 0);
@@ -48,6 +46,14 @@ export default function PostsPanel(props: Props) {
 	// region Component mounts
 	useEffectAsync(async () => {
 		postActions.clearPosts();
+
+		if (location.pathname === '/') {
+			postActions.addGenericPost({
+				type: 'StaticPostType',
+				component: 'WelcomePost',
+			} as StaticPostType);
+		}
+
 		await postActions.fetchPosts(urlParams.postId, urlParams.userId, [urlParams.hubId!]);
 	}, [urlParams.hubId, urlParams.userId]);
 	// endregion
@@ -60,10 +66,7 @@ export default function PostsPanel(props: Props) {
 			postActions.fetchPosts(undefined, urlParams.userId, urlParams.hubId ? [urlParams.hubId] : undefined);
 		}
 
-		if (pix >= 1) {
-			localStorage.setItem('swiped', '1');
-			setSwiped('1');
-		}
+		pix >= 1 && postActions.swiped(true);
 	}, [pix]);
 	// endregion
 
@@ -81,7 +84,7 @@ export default function PostsPanel(props: Props) {
 	useEffect(() => logger.info('PostIndices: ', postIndices), [...postIndices]);
 
 	useEffect(() => {
-		if (swiped !== '1') {
+		if (!swiped) {
 			setTimeout(() => {
 				postsCont.current?.classList.add('animateTutorial');
 				setTimeout(() => {
@@ -92,7 +95,7 @@ export default function PostsPanel(props: Props) {
 	}, []);
 
 	return (
-		<div ref={postsCont} id="postsPanel">
+		<div ref={postsCont} id="postsPanel" data-infinitescroll="1">
 			{allPosts === null && <PostsPanelLoading />}
 
 			{allPosts !== null && (
@@ -104,10 +107,8 @@ export default function PostsPanel(props: Props) {
 					<KeyboardAndSwipeHints />
 
 					{postIndices.map((post, index) => (
-						<SingleGenericPost key={index} post={post} />
+						<SinglePost key={index} post={post} />
 					))}
-
-					{swiped !== '1' && <SwipeUpTutorialText />}
 				</>
 			)}
 		</div>

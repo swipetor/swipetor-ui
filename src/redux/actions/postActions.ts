@@ -9,6 +9,7 @@ import {
 	PostSetActivated,
 	PostSetMutedAction,
 	PostSetPlayingAction,
+	PostSwipedAction,
 	PostUpdateAction,
 	PostUserFollowsAction,
 	PostWithIndex,
@@ -173,6 +174,14 @@ const postActions = new (class PostActions {
 			userId,
 			userFollows,
 			type: StateActionType.POST_USER_FOLLOWS,
+		});
+	}
+
+	swiped(swiped: boolean) {
+		localStorage.setItem('swiped', swiped ? '1' : '0');
+		store.dispatch<PostSwipedAction>({
+			swiped,
+			type: StateActionType.POST_SWIPED,
 		});
 	}
 })();
