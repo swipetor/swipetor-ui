@@ -5,7 +5,7 @@ import { detectBrowser, Logger, LogLevels } from '@atas/weblib-ui-js';
 import wheelUtils from 'src/utils/wheelUtils';
 import pubsub from 'src/libs/pubsub/pubsub';
 
-const logger = new Logger('useInfiniteScroll', LogLevels.Info);
+const logger = new Logger('useInfiniteScroll', LogLevels.Verbose);
 logger.infoStyle = 'background: #492E87; color: #FFF';
 
 let touchStart = 0;
@@ -96,35 +96,20 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 	};
 
 	const isEventTargetAllowed = (target: EventTarget | null) => {
-		if (target === postsCont.current) return true;
-
-		if (target instanceof HTMLVideoElement) return true;
-
-		if (target instanceof HTMLDivElement) {
-			const elem = target as HTMLDivElement;
-			const allowedClasses = [
-				'playButton',
-				'playerContainer',
-				'contentBg',
-				'exclusiveLayer',
-				'exclusiveDescDiv',
-				'exclusiveDescWrapper',
-				'exclusiveInfo',
-				'exclusiveContentDiv',
-				'swipeUpTutorialText',
-				'mediaDescription',
-				'mediaDescText',
-			];
-			if (allowedClasses.some(c => elem.classList.contains(c))) return true;
-		}
-
-		if (target instanceof HTMLSpanElement) {
-			const elem = target as HTMLSpanElement;
-			if (elem.parentElement?.classList.contains('playButton')) return true;
+		let currentElement: HTMLElement | null = target as HTMLElement;
+		while (currentElement) {
+			if (currentElement.dataset.infinitescroll === '0') {
+				logger.verbose('Event target is not allowed data-infinitescroll=0', target, currentElement);
+				return false;
+			}
+			if (currentElement.dataset.infinitescroll === '1') {
+				logger.verbose('Event target is allowed data-infinitescroll=1', target, currentElement);
+				return true;
+			}
+			currentElement = currentElement.parentElement;
 		}
 
 		logger.verbose('Event target is not allowed', target);
-
 		return false;
 	};
 

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ExclusiveLayer from 'src/pages/media/ExclusiveLayer';
-import MediaDescription from 'src/pages/post/MediaDescription';
+import MediaDescription from 'src/post/MediaDescription';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { PostMediaType } from 'src/types/enums';
 import { isMediaExclusive } from 'src/utils/postUtils';

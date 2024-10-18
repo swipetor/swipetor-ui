@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { intOrDefault, Logger, LogLevels } from '@atas/weblib-ui-js';
 import httpClient from 'src/utils/httpClient';
 import { GetUsersApiResp } from 'src/types/ApiResponses';
-import FollowButton from 'src/pages/post/FollowButton';
+import FollowButton from 'src/post/FollowButton';
 import PostSummary from 'src/pages/user/PostSummary';
 import UserMsgButton from 'src/pages/user/UserMsgButton';
 import { setPageTitle } from 'src/utils/windowUtils';

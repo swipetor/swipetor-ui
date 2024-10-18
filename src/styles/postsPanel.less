@@ -152,10 +152,6 @@ body.isBot {
    }
 
    .swipeUpTutorialText {
-	  position: absolute;
-	  left: 50%;
-	  top: calc(50% + 100px);
-	  transform: translateX(-50%);
 	  color: black;
 	  background: rgba(255, 255, 255, 0.9);
 	  border-radius: 9px;
@@ -167,18 +163,48 @@ body.isBot {
 	   white-space: nowrap;
 	  z-index: 100;
 	  animation: heartbeat 2s infinite;
+	   --translateX: 0%;
+
+	   &.abs {
+		   --translateX: -50%;
+		   position: absolute;
+		   top: calc(50% + 100px);
+		   left: 50%;
+		   transform: translateX(var(--translateX));
+	   }
    }
 }
 
 @keyframes heartbeat {
    0%, 100% {
-	  transform: translateX(-50%) scale(1);
+	  transform: translateX(var(--translateX)) scale(1);
 	  color: black;
 	  background: rgba(255, 255, 255, 0.9);
    }
    50% {
-	  transform: translateX(-50%) scale(1.2);
+	  transform: translateX(var(--translateX)) scale(1.2);
 	  color: black;
 	  background: @goldColor;
    }
+}
+
+.staticPost {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+.welcomePostDiv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+
+	.logo {
+		margin-bottom: 20px;
+		width: 256px;
+		max-width: 80%;
+	}
 }
