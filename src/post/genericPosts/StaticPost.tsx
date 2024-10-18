@@ -1,6 +1,7 @@
 import React from 'react';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import WelcomePost from 'src/post/genericPosts/WelcomePost';
+import WhySwipetorPost from 'src/post/genericPosts/WhySwipetorPost';
 
 export class StaticPostType {
 	type = 'StaticPostType';
@@ -9,6 +10,7 @@ export class StaticPostType {
 
 export const StaticPostMap = {
 	WelcomePost: WelcomePost,
+	WhySwipetorPost: WhySwipetorPost,
 };
 
 interface Props {

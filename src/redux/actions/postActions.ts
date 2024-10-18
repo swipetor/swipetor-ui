@@ -20,6 +20,7 @@ import { PostsGetApiResp } from 'src/types/ApiResponses';
 import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import qs from 'query-string';
 import playerProvider from 'src/libs/player/playerProvider';
+import { StaticPostType } from 'src/post/genericPosts/StaticPost';
 
 const postActions = new (class PostActions {
 	logger = new Logger(PostActions, LogLevels.Info);
@@ -62,7 +63,13 @@ const postActions = new (class PostActions {
 			type: StateActionType.POST_ADD,
 		});
 
-		return r.data;
+		const posts = store.getState().post.posts;
+		if (!posts || r.data.posts.length - posts.length <= 0) {
+			this.addGenericPost({
+				type: 'StaticPostType',
+				component: 'WhySwipetorPost',
+			} as StaticPostType);
+		}
 	}
 
 	async updateById(postId: number) {
