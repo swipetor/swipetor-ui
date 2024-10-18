@@ -5,11 +5,7 @@ import SwipeUpTutorialText from 'src/post/SwipeUpTutorialText';
 export default function WelcomePost() {
 	return (
 		<div className="welcomePostDiv">
-			<img
-				className="logo"
-				src="https://local.swipetor.com:8443/public/swipetor/logo-underlined-slim-256.png"
-				alt="Logo"
-			/>
+			<img className="logo" src="/public/swipetor/logo-underlined-slim-256.png" alt="Logo" />
 
 			<p>{uiConfig.site.slogan}</p>
 
