@@ -46,29 +46,13 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 	const isActiveMedia = () => {
 		return activePix === currentPost.index && activeMix === currentMix;
 	};
-
-	const isEntitled = () => {
-		if (!activePost || activeMix < 0 || currentMix < 0) return false;
-
-		const allowedCurrentMix = [currentMix - 1, currentMix, currentMix + 1];
-
-		// same post, should only be used for ix [0,0]
-		if (activePix === currentPost.index && allowedCurrentMix.includes(currentMix)) return true;
-
-		// next post first media
-		if (activePix + 1 === currentPost.index && currentMix === 0) return true;
-
-		return false;
-	};
 	//endregion
 
 	//region Actions
 	const onActiveMediaChange = () => {
 		if (!activePost || activeMix < 0 || currentMix < 0) return;
 
-		if (isEntitled()) {
-			setEntitled(playerProvider.getPlayerForIndex(currentPost.index, currentMix));
-		} else setNotEntitled();
+		setEntitled(playerProvider.getPlayerForIndex(currentPost.index));
 
 		if (isActiveMedia()) {
 			isActiveMediaRef.current = true;
@@ -76,16 +60,6 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 		} else {
 			isActiveMediaRef.current = false;
 		}
-	};
-
-	/**
-	 * This post video is not entitled to receive a video player.
-	 * There should not be a video element within this component now.
-	 */
-	const setNotEntitled = () => {
-		logger.info(`Post/Media ${currentPost.index}/${currentMix} NOT ENTITLED for a player. pix, mix, activePix`);
-		playerRef.current = null;
-		removeVideoElem();
 	};
 
 	/**
@@ -133,7 +107,7 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 		const p = playerRef.current;
 		if (!p) return logger.error('makeActiveMedia(): No player found!');
 
-		playerProvider.play(activePix, activeMix);
+		playerProvider.play(activePix);
 
 		p.onEnded(() => {
 			if (!isActiveMediaRef.current) return;

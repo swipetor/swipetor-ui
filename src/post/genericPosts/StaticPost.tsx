@@ -21,19 +21,33 @@ interface Props {
 	post?: PostWithIndex<StaticPostType>;
 }
 
-export default function StaticPost(props: Props) {
+export default function StaticPost({ post }: Props) {
 	const pix = useUIStore(s => s.post.pix);
 	const navigate = useNavigate();
+	const divRef = React.useRef<HTMLDivElement>(null);
+
+	if (!post) return null;
 
 	useEffect(() => {
-		if (pix === props.post?.index) {
+		const player = playerProvider.getPlayerForIndex(post.index);
+		if (player && divRef.current) {
+			player.moveInto(divRef.current);
+		}
+	}, [post]);
+
+	useEffect(() => {
+		if (pix === post?.index) {
 			playerProvider.pauseAll();
 			setDefaultPageTitle();
 			navigate('/', { replace: true });
 		}
 	}, [pix]);
 
-	if (!props.post?.component) return null;
-	const Component = StaticPostMap[props.post.component];
-	return <div className="staticPost">{props.post && <Component />}</div>;
+	if (!post?.component) return null;
+	const Component = StaticPostMap[post.component];
+	return (
+		<div ref={divRef} className="staticPost">
+			{post && <Component />}
+		</div>
+	);
 }

@@ -8,7 +8,7 @@ class PlayerProvider {
 	private _players: SinglePlayer[] = new Array(5);
 	private _hasTouched = false;
 
-	private logger = new Logger('PlayerProvider', LogLevels.Warn, undefined, () => ({}));
+	private logger = new Logger('PlayerProvider', LogLevels.Verbose, undefined, () => ({}));
 
 	constructor() {
 		const mutedStatus = localStorage.getItem('isMuted') === 'true';
@@ -19,25 +19,44 @@ class PlayerProvider {
 
 	/**
 	 * Needs to be called when postIndex and mediaIndex change to active and play the video.
-	 * @param postIndex
-	 * @param mediaIndex
+	 * @param pix
 	 * @param userInitiated Player will only play if user initiated unless touched already
 	 */
-	async play(postIndex: number, mediaIndex: number, userInitiated = false) {
-		this.logger.info(`play(${postIndex}, ${mediaIndex})`);
+	async play(pix: number, userInitiated = false) {
+		this.logger.info(`play(${pix})`);
 
 		if (!userInitiated && !this._hasTouched) return this.logger.info("Won't play because user hasn't touched yet.");
 
-		const player = this.getPlayerForIndex(postIndex, mediaIndex);
+		const player = this.getPlayerForIndex(pix);
+
+		this.logger.info('play(): Received player #' + player?.playerId, this._players);
 
 		if (!player) return;
 
 		if (!this._hasTouched) {
 			this.logger.info('play(): touching inactive players');
 			this._hasTouched = true;
-			this._players.filter(p => p !== player).forEach(async p => p.touch());
+			this._players
+				.filter(p => p.playerId !== player.playerId)
+				.forEach(async p => {
+					this.logger.info('play(): touching player', p.playerId);
+					try {
+						return p.touch();
+					} catch (e) {
+						this.logger.error('Exception', e);
+					}
+				});
 		} else {
-			this._players.filter(p => p !== player).forEach(p => p.pause());
+			this._players
+				.filter(p => p.playerId !== player.playerId)
+				.forEach(p => {
+					this.logger.info('play(): pausing player', p.playerId);
+					try {
+						return p.pause();
+					} catch (e) {
+						this.logger.error('Exception', e);
+					}
+				});
 		}
 
 		return player.play();
@@ -54,22 +73,24 @@ class PlayerProvider {
 	/**
 	 * Gets the right player for a given postIndex and mediaIndex
 	 * @param pix
-	 * @param mix
 	 */
-	getPlayerForIndex(pix: number, mix: number) {
+	getPlayerForIndex(pix: number) {
 		const posts = store.getState().post.posts;
 		if (!posts) return null;
 
-		const post = posts[pix] as PostWithIndex<PostForUser>;
-		const media = post.medias[mix];
+		const player = this._players[pix % this._players.length];
 
-		if (!media) throw new Error(`getPlayerForIndex(): Media not found, ix: ${pix}/${mix}, medias: ${post.medias}`);
-
-		const playerIndex = pix % this._players.length;
-		const player = this._players[playerIndex];
-
-		player.changeMedia(media, pix, mix);
-
+		const anyPost = posts[pix];
+		if (anyPost.type === 'StaticPostType') {
+			this.logger.info('getPlayerForIndex(): Static post, changing media to black frame');
+			player.changeMedia(pix);
+		} else {
+			const post = posts[pix] as PostWithIndex<PostForUser>;
+			const media = post?.medias[0];
+			this.logger.info('getPlayerForIndex(): Post', post, media);
+			if (!media) throw new Error(`getPlayerForIndex(): Media not found for pix ${pix}, medias: ${post.medias}`);
+			player.changeMedia(pix, media);
+		}
 		return player;
 	}
 	//region Vanilla actions
@@ -77,14 +98,20 @@ class PlayerProvider {
 		return this._players.every(p => p.isPaused());
 	}
 
-	pause(postId: number, mediaId: number) {
+	pause(pix: number) {
 		this.logger.info(`pause()`);
-		this.getPlayerForIndex(postId, mediaId)?.pause();
+		this.getPlayerForIndex(pix)?.pause();
 	}
 
 	pauseAll() {
 		this.logger.info(`pauseAll()`);
-		this._players.forEach(p => p.pause());
+		this._players.forEach(p => {
+			try {
+				p.pause();
+			} catch (e) {
+				this.logger.error('Exception', e);
+			}
+		});
 	}
 
 	mute(isMuted: boolean) {
@@ -98,7 +125,6 @@ class PlayerProvider {
 			status.push({
 				playerId: p.playerId,
 				pix: p._pix,
-				mix: p._mix,
 			});
 		}
 

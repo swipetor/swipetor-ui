@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import MediaDescription from 'src/post/MediaDescription';
 import { useUIStore } from 'src/redux/reduxUtils';
 import { PostMediaType } from 'src/types/enums';
 import PostVideo from './PostVideo';
 import photoUtils from 'src/utils/photoUtils';
-import playerProvider from 'src/libs/player/playerProvider';
 import { PostForUser } from 'src/types/DTOs';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 
@@ -36,11 +35,11 @@ export default function SingleMedia(props: Props) {
 	isActive() && cls.push('active');
 	stretch && cls.push('stretch');
 
-	useEffect(() => {
-		if (isActive()) {
-			playerProvider.pauseAll();
-		}
-	}, [activePix, activeMix]);
+	// useEffect(() => {
+	// 	if (isActive()) {
+	// 		playerProvider.pauseAll();
+	// 	}
+	// }, [activePix, activeMix]);
 
 	return (
 		<div

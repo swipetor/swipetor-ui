@@ -2,12 +2,14 @@ import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import { PostMediaDto } from 'src/types/DTOs';
 import { getVideoUrl } from 'src/utils/videoUtils';
 import postActions from 'src/redux/actions/postActions';
+import store from 'src/redux/store';
 
 const loggerStyles = [
 	'background: #FFA500; color: #000',
 	'background: #00FF00; color: #000',
 	'background: #979B8D; color: #000',
 	'background: #FF8080; color: #000',
+	'background: #CC8080; color: #000',
 ];
 
 export default class SinglePlayer {
@@ -21,15 +23,15 @@ export default class SinglePlayer {
 	private _hasTouched = false;
 
 	_pix: number = -1;
-	_mix: number = -1;
 
-	logger = new Logger('SinglePlayer', LogLevels.Warn, undefined, () => ({
-		pix: this._pix,
-		mix: this._mix,
-		playerId: this.playerId,
-	}));
+	private logger: Logger;
 
 	constructor(playerId: number, isMuted: boolean) {
+		this.logger = new Logger(`SinglePlayer#${playerId}`, LogLevels.Verbose, undefined, () => ({
+			pix: this._pix,
+			playerId: this.playerId,
+		}));
+
 		this.logger.infoStyle = loggerStyles[playerId];
 		this.logger.warnStyle = loggerStyles[playerId];
 		this.logger.errorStyle = loggerStyles[playerId];
@@ -38,6 +40,7 @@ export default class SinglePlayer {
 
 		this.videoElem = document.createElement('video');
 		this.videoElem.id = `video-player-${playerId}`;
+		this.videoElem.className = 'videoPlayer';
 		this.videoElem.playsInline = true;
 		this.videoElem.loop = false;
 		this.videoElem.controls = false;
@@ -101,16 +104,27 @@ export default class SinglePlayer {
 		await this.warmUp();
 	}
 
-	changeMedia(media: PostMediaDto, pix: number, mix: number) {
-		if (media === this.media) return;
+	changeMedia(pix: number, media?: PostMediaDto) {
+		if (this._pix === pix && this.media?.id === media?.id) {
+			this.logger.info('changeMedia(): Already using same media.', {
+				pix,
+				media,
+				_current: { pix: this._pix, media: this.media },
+			});
+			return;
+		}
 
 		this._pix = pix;
-		this._mix = mix;
 
-		this.logger.info('changeMedia(): called.');
+		this.logger.info('changeMedia(): called with media', media, store.getState().post?.posts);
 		this.media = media;
 
-		this.setVideoSource(getVideoUrl(media.clippedVideo || media.video) || '');
+		if (media) {
+			this.setVideoSource(getVideoUrl(media.clippedVideo || media.video) || '');
+		} else {
+			this.setVideoSource('/public/black_frame.mp4');
+		}
+
 		this.videoElem.currentTime = 0;
 
 		// If touched, warm up
@@ -129,7 +143,11 @@ export default class SinglePlayer {
 			await this.videoElem.play();
 		} catch (e) {
 			const error = e as Error;
-			if (error?.name === 'NotAllowedError' || error.message?.includes('interact')) {
+			if (error?.name === 'AbortError') {
+				// The play() request was interrupted by a call to videoElem.load()
+				this.logger.warn('warmUp(): play() request was aborted due to load request.');
+				this._keepPlayingAfterWarmUp = true;
+			} else if (error?.name === 'NotAllowedError' || error.message?.includes('interact')) {
 				this.logger.info('warmUp(): Auto-play with sound needs user interaction first.', e);
 			} else {
 				const error = e as Error;
@@ -139,16 +157,16 @@ export default class SinglePlayer {
 			this._warmingUp = false;
 			this._tryingToPlay = false;
 
-			if (!this._keepPlayingAfterWarmUp) {
-				this.videoElem.pause();
-			} else {
-				this.logger.info('warmUp(): Not pausing after warmUp() because _keepPlayingAfterWarmUp is false.');
+			if (this._keepPlayingAfterWarmUp) {
+				this.logger.info('warmUp(): Not pausing after warmUp() because _keepPlayingAfterWarmUp is true.');
 				postActions.setPlayingStatus(true);
-				this._keepPlayingAfterWarmUp = false;
+			} else {
+				this.videoElem.pause();
+				this.videoElem.currentTime = currentTime;
 			}
 
 			this.videoElem.muted = mutedStatus;
-			this.videoElem.currentTime = currentTime;
+			this._keepPlayingAfterWarmUp = false;
 			this.logger.info('warmUp(): finished.');
 		}
 	}
@@ -172,7 +190,9 @@ export default class SinglePlayer {
 	}
 
 	pause() {
-		if (this._tryingToPlay) return this.logger.error('pause(): Trying to play, should not pause.');
+		if (this._tryingToPlay) {
+			throw new Error(`pause(): can't pause #${this.playerId}, Already trying to play.`);
+		}
 
 		if (this._warmingUp) {
 			this.logger.info('pause(): Warming up, cannot pause.');

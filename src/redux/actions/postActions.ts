@@ -118,7 +118,7 @@ const postActions = new (class PostActions {
 		if (postState.isPlaying === isPlaying)
 			return this.logger.warn(`play(${isPlaying}, ${pix}, ${mix}): Already doing it`);
 
-		isPlaying ? playerProvider.play(pix, mix, userInitiated) : playerProvider.pause(pix, mix);
+		isPlaying ? playerProvider.play(pix, userInitiated) : playerProvider.pause(pix);
 
 		store.dispatch<PostSetPlayingAction>({
 			isPlaying,
