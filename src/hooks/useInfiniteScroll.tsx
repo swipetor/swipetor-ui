@@ -6,7 +6,7 @@ import wheelUtils from 'src/utils/wheelUtils';
 import pubsub from 'src/libs/pubsub/pubsub';
 import playerProvider from 'src/libs/player/playerProvider';
 
-const logger = new Logger('useInfiniteScroll', LogLevels.Info);
+const logger = new Logger('useInfiniteScroll', LogLevels.Warn);
 logger.infoStyle = 'background: #492E87; color: #FFF';
 
 let touchStart = 0;

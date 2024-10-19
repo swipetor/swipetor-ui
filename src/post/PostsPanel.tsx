@@ -13,7 +13,7 @@ import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { StaticPostType } from 'src/post/genericPosts/StaticPost';
 import SinglePost from 'src/post/SinglePost';
 
-const logger = new Logger('PostsPanel', LogLevels.Info);
+const logger = new Logger('PostsPanel', LogLevels.Warn);
 
 interface Props {
 	postId?: number;
