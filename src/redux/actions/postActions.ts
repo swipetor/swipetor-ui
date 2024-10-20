@@ -88,8 +88,9 @@ const postActions = new (class PostActions {
 	 * @param isPlaying
 	 */
 	setPlayingStatus(isPlaying: boolean) {
-		if (store.getState().post.isPlaying === isPlaying)
-			return this.logger.info(`setPlayingStatus(): Already isPlaying=${isPlaying}`);
+		if (store.getState().post.isPlaying === isPlaying) {
+			return this.logger.verbose(`setPlayingStatus(): Already isPlaying=${isPlaying}`);
+		}
 
 		store.dispatch<PostSetPlayingAction>({
 			isPlaying,

@@ -86,6 +86,7 @@ const VideoProgressBar: React.FC<Props> = (props: Props) => {
 		<div
 			ref={progressBarRef}
 			className={`videoProgressBar ${isClip ? 'isClip' : ''}`}
+			data-infinitescroll="no"
 			onClick={handleProgressBarClick}>
 			{(props.media.clipTimes || []).map((t, i) => (
 				<div
