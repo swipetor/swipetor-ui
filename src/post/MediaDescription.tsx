@@ -54,7 +54,10 @@ const MediaDescription: React.FC<Props> = ({ post, media }) => {
 				{(window.userDeviceInfo?.isBot || !collapsed) && (
 					<>
 						{showFullDescription}
-						<DelayedButton onDelayedClick={() => setCollapsed(true)} className="less">
+						<DelayedButton
+							data-infinitescroll="scroll"
+							onDelayedClick={() => setCollapsed(true)}
+							className="less">
 							Less
 						</DelayedButton>
 					</>
@@ -62,7 +65,7 @@ const MediaDescription: React.FC<Props> = ({ post, media }) => {
 			</div>
 
 			{collapsed && isEllipsisActive && (
-				<DelayedButton onDelayedClick={() => setCollapsed(false)} className="more">
+				<DelayedButton data-infinitescroll="scroll" onDelayedClick={() => setCollapsed(false)} className="more">
 					More
 				</DelayedButton>
 			)}
