@@ -31,7 +31,7 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 
 	const logger = useMemo(
 		() =>
-			new Logger('PostVideo', LogLevels.Warn, undefined, () => ({
+			new Logger('PostVideo', LogLevels.Info, undefined, () => ({
 				'pix/mix': `${activePix}/${activeMix}`,
 				currentPix: currentPost.index,
 				currentMix,
@@ -40,7 +40,7 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 		[activePix, currentPost, activeMix, currentMix, currentMedia, activeMix],
 	);
 
-	useEffect(() => onActiveMediaChange(), [activePost, activeMix]);
+	useEffect(() => onActiveMediaChange(), [activePost?.index, activeMix]);
 
 	//region Conditions
 	const isActiveMedia = () => {
@@ -112,8 +112,10 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 		p.onEnded(() => {
 			if (!isActiveMediaRef.current) return;
 			logger.info('onEnded(): Video ended, restarting it.');
-			p.setCurrentTime(0);
-			isActiveMedia() && p.play();
+			if (isActiveMedia()) {
+				p.setCurrentTime(0);
+				p.play();
+			}
 		});
 
 		setTimeout(() => {
@@ -136,7 +138,7 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 			<VideoProgressBar
 				currentTime={currentSecond}
 				media={currentMedia}
-				totalDuration={currentMedia?.video?.duration || 0}
+				totalDuration={Math.round(currentMedia?.video?.duration || 0)}
 				setCurrentTime={setCurrentTime}
 			/>
 

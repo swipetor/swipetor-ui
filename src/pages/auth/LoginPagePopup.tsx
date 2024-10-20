@@ -87,7 +87,7 @@ export default function LoginPagePopup(props: Props) {
 				sitekey={uiConfig.recaptcha?.key || ''}
 				theme="dark"
 				size={'invisible'}
-				badge={'inline'}
+				badge={'bottomright'}
 				onChange={recaptcha.onChange}
 			/>
 		</div>

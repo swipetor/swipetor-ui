@@ -6,6 +6,8 @@ import { useUIStore } from 'src/redux/reduxUtils';
 import playerProvider from 'src/libs/player/playerProvider';
 import { setDefaultPageTitle } from 'src/utils/windowUtils';
 import { useNavigate } from 'react-router-dom';
+import { useUrlParams } from 'src/post/PostsPanelHooks';
+import { getUrlWithQuery } from '@atas/weblib-ui-js';
 
 export class StaticPostType {
 	type = 'StaticPostType';
@@ -25,6 +27,7 @@ export default function StaticPost({ post }: Props) {
 	const pix = useUIStore(s => s.post.pix);
 	const navigate = useNavigate();
 	const divRef = React.useRef<HTMLDivElement>(null);
+	const urlParams = useUrlParams();
 
 	if (!post) return null;
 
@@ -39,7 +42,9 @@ export default function StaticPost({ post }: Props) {
 		if (pix === post?.index) {
 			playerProvider.pauseAll();
 			setDefaultPageTitle();
-			navigate('/', { replace: true });
+
+			const url = getUrlWithQuery('/', { hubId: urlParams.hubId });
+			navigate(url, { replace: true });
 		}
 	}, [pix]);
 

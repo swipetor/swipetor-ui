@@ -12,6 +12,7 @@ import { useEffectAsync } from 'src/utils/reactUtils';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import { StaticPostType } from 'src/post/genericPosts/StaticPost';
 import SinglePost from 'src/post/SinglePost';
+import PostsPanelTopRight from 'src/post/PostsPanelTopRight';
 
 const logger = new Logger('PostsPanel', LogLevels.Warn);
 
@@ -96,7 +97,7 @@ export default function PostsPanel(props: Props) {
 				<>
 					<NoPostsMsg posts={allPosts} />
 
-					{/*<PostsPanelTopRight hubId={urlParams.hubId} />*/}
+					<PostsPanelTopRight hubId={urlParams.hubId} />
 
 					<KeyboardAndSwipeHints />
 

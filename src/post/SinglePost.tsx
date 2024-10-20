@@ -12,6 +12,7 @@ import { PostWithIndex } from 'src/redux/reducers/postReducer';
 import StaticPost, { StaticPostType } from 'src/post/genericPosts/StaticPost';
 import { PostForUser } from 'src/types/DTOs';
 import SwipeUpTutorialText from 'src/post/SwipeUpTutorialText';
+import { useUrlParams } from 'src/post/PostsPanelHooks';
 
 interface Props {
 	post?: PostWithIndex;
@@ -23,6 +24,7 @@ export default function SinglePost({ post }: Props) {
 	const singlePostRef = React.useRef<HTMLDivElement>(null);
 	const location = useLocation();
 	const swiped = useUIStore((s: UIState) => s.post.swiped);
+	const urlParams = useUrlParams();
 
 	const logger = useMemo(
 		() =>
@@ -47,7 +49,10 @@ export default function SinglePost({ post }: Props) {
 		if (!post || !isActivePost()) return;
 
 		if (post.type === 'PostForUser') {
-			const postsUrl = getPostUrl(post as PostWithIndex<PostForUser>);
+			const postsUrl = getPostUrl(post as PostWithIndex<PostForUser>, {
+				hubId: urlParams.hubId,
+				userId: urlParams.userId,
+			});
 			if (location.pathname !== postsUrl) {
 				navigate(postsUrl, { replace: true });
 			}
