@@ -6,7 +6,7 @@ import wheelUtils from 'src/utils/wheelUtils';
 import pubsub from 'src/libs/pubsub/pubsub';
 import playerProvider from 'src/libs/player/playerProvider';
 
-const logger = new Logger('useInfiniteScroll', LogLevels.Warn);
+const logger = new Logger('useInfiniteScroll', LogLevels.Info);
 logger.infoStyle = 'background: #492E87; color: #FFF';
 
 let touchStart = 0;
@@ -96,28 +96,51 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 		};
 	};
 
-	const isEventTargetAllowed = (target: EventTarget | null) => {
-		let currentElement: HTMLElement | null = target as HTMLElement;
-		while (currentElement) {
-			if (currentElement.dataset.infinitescroll === '0') {
-				logger.verbose('Event target is not allowed data-infinitescroll=0', target, currentElement);
+	const isEventTargetAllowed = (target: EventTarget | null, allowedFor: 'any' | 'scroll') => {
+		let allowedBy: HTMLElement | null = target as HTMLElement;
+		while (allowedBy) {
+			const sc = allowedBy.dataset?.infinitescroll;
+			if (!sc) {
+				allowedBy = allowedBy.parentElement;
+				continue;
+			}
+			if (sc === 'no') {
+				logger.verbose(`Event target is not allowed data-infinitescroll=${sc}`, {
+					target,
+					allowedBy,
+				});
 				return false;
 			}
-			if (currentElement.dataset.infinitescroll === '1') {
-				logger.verbose('Event target is allowed data-infinitescroll=1', target, currentElement);
+			if (sc === 'any' || (sc === 'scroll' && allowedFor === 'scroll')) {
+				logger.verbose(`Event target is allowed data-infinitescroll=${sc}`, {
+					target,
+					allowedBy,
+				});
 				return true;
 			}
-			currentElement = currentElement.parentElement;
+
+			logger.verbose('Event target does not match any conditions???', {
+				target,
+				allowedBy,
+				allowedFor,
+			});
+			return false;
 		}
 
-		logger.verbose('Event target is not allowed', target);
+		logger.verbose('Event target is not allowed after checking all tree', {
+			target,
+			allowedBy,
+		});
 		return false;
 	};
 
 	const onTapStart = (clientX: number, clientY: number, e: UIEvent) => {
 		e.stopPropagation();
 		e.stopImmediatePropagation();
-		if (!isEventTargetAllowed(e.target)) return;
+		touchStartTime = Date.now();
+		touchStart = clientY;
+		touchEnd = clientY;
+		if (!isEventTargetAllowed(e.target, 'scroll')) return;
 
 		playerProvider.touchIfNotTouched();
 
@@ -128,9 +151,6 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 
 		logger.verbose('onTapStart()', clientX, clientY);
 		isTouching = true;
-		touchStart = clientY;
-		touchEnd = clientY;
-		touchStartTime = Date.now();
 
 		activePostRef.current = getActiveSinglePost();
 		nextPostRef.current = getNextPost();
@@ -140,7 +160,7 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 	const onTapMove = (clientY: number, e: UIEvent) => {
 		e.stopPropagation();
 		e.stopImmediatePropagation();
-		if (!isTouching || !isEventTargetAllowed(e.target)) return;
+		if (!isTouching || !isEventTargetAllowed(e.target, 'scroll')) return;
 
 		e.stopPropagation();
 
@@ -169,34 +189,42 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 	const onTouchEnd = (clientX: number, clientY: number, e: UIEvent) => {
 		e.stopPropagation();
 		e.stopImmediatePropagation();
-		if (!isTouching || !isEventTargetAllowed(e.target)) return;
-
-		isTouching = false;
-
 		logger.verbose('onTouchEnd()');
 
-		const travelledPixels = touchEnd - touchStart;
-		const travelledPixelsAbs = Math.abs(travelledPixels);
+		try {
+			const travelledPixels = touchEnd - touchStart;
+			const travelledPixelsAbs = Math.abs(travelledPixels);
 
-		if (travelledPixels > 0 && !prevPostRef.current) return; // No prev post to swipe back
-		if (travelledPixels < 0 && !nextPostRef.current) return; // No next post to swipe back
+			if (travelledPixels > 0 && !prevPostRef.current) return; // No prev post to swipe back
+			if (travelledPixels < 0 && !nextPostRef.current) return; // No next post to swipe back
 
-		// Clicked
-		if (travelledPixelsAbs < 15 && Date.now() - touchStartTime < 300) {
-			logger.verbose("It's a click", clientX, clientY);
-			resetActivePostStyle();
-			return postActions.playPause({ userInitiated: true });
-		}
+			// Clicked
+			if (travelledPixelsAbs < 15 && Date.now() - touchStartTime < 300 && isEventTargetAllowed(e.target, 'any')) {
+				logger.verbose("It's a click", clientX, clientY);
+				resetActivePostStyle();
+				return postActions.playPause({ userInitiated: true });
+			}
 
-		if (travelledPixelsAbs > calculateAdjustedThreshold(touchEnd)) {
-			fullSwipe(travelledPixelsAbs, travelledPixels < 0 ? 1 : -1);
-		} else {
-			swipeBack(travelledPixelsAbs);
+			if (!isTouching || !isEventTargetAllowed(e.target, 'scroll')) {
+				logger.verbose('onTouchEnd(): Not touching or event target is not scrollable', {
+					isTouching,
+					target: e.target,
+				});
+				return;
+			}
+
+			if (travelledPixelsAbs > calculateAdjustedThreshold(touchEnd)) {
+				fullSwipe(travelledPixelsAbs, travelledPixels < 0 ? 1 : -1);
+			} else {
+				swipeBack(travelledPixelsAbs);
+			}
+		} finally {
+			isTouching = false;
 		}
 	};
 
 	const onPointerCancel = (e: PointerEvent) => {
-		if (!isTouching || !isEventTargetAllowed(e.target)) return;
+		if (!isTouching || !isEventTargetAllowed(e.target, 'scroll')) return;
 
 		isTouching = false;
 
@@ -368,7 +396,7 @@ export default function useInfiniteScroll(postsCont: React.RefObject<HTMLDivElem
 	 * @param travelledPixels Needed to calculate the animation duration
 	 */
 	const swipeBack = (travelledPixels: number) => {
-		const animDur = 50;
+		const animDur = 100;
 
 		logger.info('swipeBack()', { animDur });
 

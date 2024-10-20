@@ -16,7 +16,7 @@ export default function SinglePostTopRow({ post }: Props) {
 	return (
 		<div className="topRow">
 			{post?.user && (
-				<div className="userInfoDiv">
+				<div className="userInfoDiv" data-infinitescroll="no">
 					<DelayedLink
 						to={`/u/${post.user.id}/${post.user.username.toLowerCase()}`}
 						className="mainBtn transparent userInfo">

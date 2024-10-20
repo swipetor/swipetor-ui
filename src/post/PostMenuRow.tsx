@@ -44,7 +44,7 @@ const PostMenuRow: React.FC<Props> = ({ post }) => {
 	};
 
 	return (
-		<div className="postMenuRow" data-infinitescroll="0">
+		<div className="postMenuRow" data-infinitescroll="scroll">
 			<DelayedButton
 				onDelayedClick={() => postActions.mute(!isMuted)}
 				title="Mute / Unmute"

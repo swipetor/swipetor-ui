@@ -89,7 +89,7 @@ export default function PostsPanel(props: Props) {
 	}, []);
 
 	return (
-		<div ref={postsCont} id="postsPanel" data-infinitescroll="1">
+		<div ref={postsCont} id="postsPanel" data-infinitescroll="any">
 			{allPosts === null && <PostsPanelLoading />}
 
 			{allPosts !== null && (

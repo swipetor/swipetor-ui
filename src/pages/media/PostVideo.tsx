@@ -113,7 +113,7 @@ export default function PostVideo({ currentPost, currentMedia }: Props) {
 			if (!isActiveMediaRef.current) return;
 			logger.info('onEnded(): Video ended, restarting it.');
 			p.setCurrentTime(0);
-			p.play();
+			isActiveMedia() && p.play();
 		});
 
 		setTimeout(() => {
