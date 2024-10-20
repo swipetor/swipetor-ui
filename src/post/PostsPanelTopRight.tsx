@@ -19,7 +19,7 @@ export default function PostsPanelTopRight(props: Props) {
 	const hub = useUIStore(s => (props.hubId ? s.hub.hubsById[props.hubId] : null));
 
 	return (
-		<div className="topRight">
+		<div className="topRight" data-infinitescroll="scroll">
 			<DelayedButton onDelayedClick={() => showHubsPopup()} className="btn">
 				# {hub?.name || 'All Hubs'}
 			</DelayedButton>
