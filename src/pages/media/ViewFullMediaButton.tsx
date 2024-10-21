@@ -16,12 +16,10 @@ export default function ViewFullMediaButton({ fullMedia }: Props) {
 	};
 
 	return (
-		<DelayedButton
-			loggedInOnly
-			data-infinitescroll="scroll"
-			onDelayedClick={() => moveMediaHeader()}
-			className="main gold viewFullMediaBtn">
-			View full {secondsToPrettyDuration(fullMedia.video?.duration)} video
-		</DelayedButton>
+		<div data-infinitescroll="scroll" className="viewFullMediaBtnWrapper">
+			<DelayedButton loggedInOnly onDelayedClick={() => moveMediaHeader()} className="main gold">
+				View full {secondsToPrettyDuration(fullMedia.video?.duration)} video
+			</DelayedButton>
+		</div>
 	);
 }
