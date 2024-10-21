@@ -2,7 +2,6 @@ import { Logger, LogLevels } from '@atas/weblib-ui-js';
 import React, { useEffect, useMemo } from 'react';
 import { UIState } from 'src/redux/reducers/reducers';
 import SingleMedia from '../pages/media/SingleMedia';
-import MediaProgressIndicators from '../pages/media/MediaProgressIndicators';
 import PostMenuRow from './PostMenuRow';
 import SinglePostTopRow from './SinglePostTopRow';
 import { useUIStore } from 'src/redux/reduxUtils';
@@ -89,13 +88,11 @@ export default function SinglePost({ post }: Props) {
 
 		return (
 			<>
-				<MediaProgressIndicators post={p} />
+				{/*<MediaProgressIndicators post={p} />*/}
 				<SinglePostTopRow post={p} />
 				{/*<PostsPanelTopRight />*/}
 
-				{p.medias.map((_, i) => (
-					<SingleMedia key={i} post={p} mix={i} />
-				))}
+				<SingleMedia post={p} mix={0} />
 
 				<PostMenuRow post={p} />
 

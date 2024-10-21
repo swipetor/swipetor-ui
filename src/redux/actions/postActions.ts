@@ -4,6 +4,7 @@ import {
 	AnyPost,
 	PostAddAction,
 	PostFavAction,
+	PostMediaMoveHead,
 	PostRevealAction,
 	PostsClearAction,
 	PostSetActivated,
@@ -134,6 +135,14 @@ const postActions = new (class PostActions {
 			pix,
 			mix,
 			type: StateActionType.POST_SET,
+		});
+	}
+
+	moveMediaToHead(postId: number, mediaId: number) {
+		store.dispatch<PostMediaMoveHead>({
+			postId,
+			mediaId,
+			type: StateActionType.POST_MEDIA_MOVE_HEAD,
 		});
 	}
 

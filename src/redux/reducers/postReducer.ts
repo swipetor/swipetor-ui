@@ -166,6 +166,32 @@ export default function (state = initialState, action: Action): PostState {
 		};
 	}
 
+	if (action.type === StateActionType.POST_MEDIA_MOVE_HEAD) {
+		const a = action as PostMediaMoveHead;
+
+		const posts = state.posts?.map(post => {
+			if (post.type === 'PostForUser') {
+				const p = post as PostWithIndex<PostForUser>;
+
+				if (p.id === a.postId) {
+					const medias = [...p.medias];
+					const media = medias.find(m => m.id === a.mediaId);
+					if (media) {
+						medias.splice(medias.indexOf(media), 1);
+						medias.unshift(media);
+					}
+					return { ...p, medias };
+				}
+			}
+			return post;
+		});
+
+		return {
+			...state,
+			posts,
+		};
+	}
+
 	if (action.type === StateActionType.POST_SWIPED) {
 		const a = action as PostSwipedAction;
 		return { ...state, swiped: a.swiped };
@@ -212,4 +238,9 @@ export interface PostUserFollowsAction extends Action<StateActionType.POST_USER_
 
 export interface PostSwipedAction extends Action<StateActionType.POST_SWIPED> {
 	swiped: boolean;
+}
+
+export interface PostMediaMoveHead extends Action<StateActionType.POST_MEDIA_MOVE_HEAD> {
+	postId: number;
+	mediaId: number;
 }

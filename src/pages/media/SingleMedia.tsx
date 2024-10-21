@@ -6,6 +6,7 @@ import PostVideo from './PostVideo';
 import photoUtils from 'src/utils/photoUtils';
 import { PostForUser } from 'src/types/DTOs';
 import { PostWithIndex } from 'src/redux/reducers/postReducer';
+import ViewFullMediaButton from 'src/pages/media/ViewFullMediaButton';
 
 interface Props {
 	post: PostWithIndex<PostForUser>;
@@ -35,6 +36,19 @@ export default function SingleMedia(props: Props) {
 	isActive() && cls.push('active');
 	stretch && cls.push('stretch');
 
+	const getFullMedia = () => props.post.medias.find(m => m.isFollowersOnly);
+
+	const hasFullMedia = () => {
+		if (!isActive()) return false;
+
+		const fullMedia = getFullMedia();
+
+		const medias = props.post.medias;
+		const currMedia = medias[props.mix];
+
+		return getFullMedia() && !currMedia.isFollowersOnly;
+	};
+
 	// useEffect(() => {
 	// 	if (isActive()) {
 	// 		playerProvider.pauseAll();
@@ -50,6 +64,8 @@ export default function SingleMedia(props: Props) {
 				backgroundImage: `url(${photoUtils.getSrcByPhoto(m.previewPhoto)})`,
 			}}>
 			<PostVideo currentPost={props.post} currentMedia={m} />
+
+			{hasFullMedia() && <ViewFullMediaButton fullMedia={getFullMedia()} />}
 
 			<MediaDescription post={props.post} media={m} />
 		</div>
