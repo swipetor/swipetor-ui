@@ -84,8 +84,8 @@ export default function PostsPanel(props: Props) {
 				postsCont.current?.classList.add('animateTutorial');
 				setTimeout(() => {
 					postsCont.current?.classList.remove('animateTutorial');
-				}, 2100);
-			}, 1000);
+				}, 1100);
+			}, 500);
 		}
 	}, []);
 
