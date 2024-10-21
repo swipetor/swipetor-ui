@@ -18,7 +18,7 @@ export default function KeyboardAndSwipeHints() {
 	if (isTouchDevice || hideHints) return null;
 
 	return (
-		<div className="KeyboardAndSwipeHints">
+		<div data-infinitescroll="scroll" className="KeyboardAndSwipeHints">
 			<div className="hint hintIcon">
 				<span className="material-icons-outlined">{isTouchDevice ? 'info' : 'keyboard'}</span>
 			</div>
