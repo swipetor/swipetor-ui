@@ -45,8 +45,6 @@ web.
 
 ### Community Edition 
 - [AGPL-3.0 License](LICENSE)
-- Restrictions
-- - Multi-tenant or multi-domain usage
 - This license allows commercial use, but you should share any modifications you make to the software. Please send a
     PR back for any improvements.
 
