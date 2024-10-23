@@ -43,11 +43,12 @@ Please contribute back to the projects to provide a reliable high quality video 
 distributed
 web.
 
-## License
-
-- **AGPL-3.0 License**: Default and preferred open-source license for the project. For more details, see
-  the [AGPL-3.0 License](LICENSE).
-  - This license allows commercial use, but you should share any modifications you make to the software. Please send a
+### Community Edition 
+- [AGPL-3.0 License](LICENSE)
+- Restrictions
+- - Multi-tenant or multi-domain usage
+- This license allows commercial use, but you should share any modifications you make to the software. Please send a
     PR back for any improvements.
-  - This license restricts multi-tenant or multi-domain usage.
-- **Different/Dual Licensing**: Please contact at www.swipetor.com.
+
+### Different/Dual Licensing
+- Please contact at www.swipetor.com
