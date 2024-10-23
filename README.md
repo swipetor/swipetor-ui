@@ -45,8 +45,7 @@ web.
 
 ### Community Edition 
 - [AGPL-3.0 License](LICENSE)
-- This license allows commercial use, but you should share any modifications you make to the software. Please send a
-    PR back for any improvements.
+- This license allows commercial use, but you must share modifications made for software distributed over the internet. Contributions via PRs are welcome!
 
 ### Different/Dual Licensing
 - Please contact at www.swipetor.com
